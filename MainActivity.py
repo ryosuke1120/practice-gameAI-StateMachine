@@ -1,7 +1,8 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import time
-from models.Fox import Fox
+from models.Fox import *
 
  
 # class MainActivity : AppCompatActivity() 
@@ -9,7 +10,6 @@ class MainActivity(object):
 
 	def __init__(self):
 		self.myFox = Fox(1, 10)
-		# handler = Handler()
  
 	def runFox(self): 
 		self.myFox.update()

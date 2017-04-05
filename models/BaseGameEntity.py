@@ -1,12 +1,9 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
-#package com.xiao.gameai.gameai.model
-#パッケージはModelを記述？
 from abc import ABCMeta, abstractmethod
 
 #全ての動作主体のベースとなるEntity
-
 
 #abstract class BaseGameEntity( val m_ID : Int )
 # 抽象クラス
