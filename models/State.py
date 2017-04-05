@@ -22,7 +22,7 @@ class State(object):
      #その状態のときに何度も実行される
      #この中でFox.changeState(新しいState)が呼ばれ、状態が変更される
      #fun execute( fox: Fox )
-     @abstractmethod
+    @abstractmethod
     def execute(self, fox):
     	pass
  
