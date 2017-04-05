@@ -9,7 +9,7 @@
 # import com.xiao.gameai.gameai.model.Fox
 # import kotlinx.android.synthetic.main.activity_main.*
 import time
-import "/Users/RNakamura/Project/practice-gameAI-StateMachine/models/*" 
+import models.Fox
 
  
 # class MainActivity : AppCompatActivity() 
