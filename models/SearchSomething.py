@@ -27,7 +27,7 @@ class SearchSomething(State.State):
 		if random_num % 3 == 0 :
 			#fox.changeState(FindAndFireSomething.FindAndFireSomething())
 			#entity_type.getFsm().changeState( FindAndFireSomething )
-			entity.getFsm(FindAndFireSomething.FindAndFireSomething())
+			entity.getFsm().changeState(FindAndFireSomething.FindAndFireSomething())
 
 	#「焼く」状態に移行する前に一度だけ実行される
 	def exit(self, fox):

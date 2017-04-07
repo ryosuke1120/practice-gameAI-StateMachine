@@ -27,7 +27,7 @@ class FindAndFireSomething(State.State):
 		entity.setMessage("がちゃがちゃ")
 		if entity.isDonenessFull():
 			#entity.changeState(EatSomething.EatSomething())
-			entity.getFsm(EatSomething.EatSomething())
+			entity.getFsm().changeState(EatSomething.EatSomething())
 
 		# random_num = random.randint(0,9)
 		# fox.setMessage("じゅーじゅー")

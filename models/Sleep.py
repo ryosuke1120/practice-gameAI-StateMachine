@@ -25,7 +25,7 @@ class Sleep(State.State):
 		entity.digestSomething(random.randint(1,2))
 		if entity.isHungry():
 			# entity.changeState(SearchSomething.SearchSomething())
-			entity.getFsm(SearchSomething.SearchSomething())
+			entity.getFsm().changeState(SearchSomething.SearchSomething())
 
 		# random_num = random.randint(0,9)
 		# if random_num % 3 == 0 :

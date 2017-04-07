@@ -33,10 +33,10 @@ class EatSomething(State.State):
 		if entity.isAte():
 			if entity.isStomachFull():
 				# entity.changeState(Sleep.Sleep())
-				entity.getFsm(Sleep.Sleep())
+				entity.getFsm().changeState(Sleep.Sleep())
 			else:
 				# entity.changeState(FindAndFireSomething.FindAndFireSomething())
-				entity.getFsm(FindAndFireSomething.FindAndFireSomething())
+				entity.getFsm().changeState(FindAndFireSomething.FindAndFireSomething())
 
 		# random_num = random.randint(0,9)
 		# fox.setMessage("もぐもぐ")

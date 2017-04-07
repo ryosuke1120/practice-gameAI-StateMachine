@@ -5,6 +5,7 @@ import BaseGameEntity
 import SearchSomething
 import StateMachine
 import Sleep
+import FoxGlobalState
 
 #キツネの状態を持つ
 
@@ -17,7 +18,9 @@ class Fox(BaseGameEntity.BaseGameEntity):
 		#現在の状態を保持
 		#self.m_pCurrentState = SearchSomething.SearchSomething()
 		#private var m_pStateMachine = StateMachine<Fox>( this, SearchSomething, Sleep, null )
-		self.m_pStateMachine = StateMachine.StateMachine(self, SearchSomething.SearchSomething(), Sleep.Sleep(), None)
+		#self.m_pStateMachine = StateMachine.StateMachine(self, SearchSomething.SearchSomething(), Sleep.Sleep(), None)
+		#private var m_pStateMachine = StateMachine<Fox>( this, SearchSomething, Sleep, FoxGlobalState )
+		self.m_pStateMachine = StateMachine.StateMachine(self, SearchSomething.SearchSomething(), Sleep.Sleep(), FoxGlobalState.FoxGlobalState())
 
 		#現在のお腹の空き具合：0が空腹状態
 		self.m_nowStomachDegree = 5
@@ -49,8 +52,8 @@ class Fox(BaseGameEntity.BaseGameEntity):
 	# 	#新しいステートに変更し、enter処理
 	# 	self.m_pCurrentState = pNewState
 	# 	self.m_pCurrentState.enter(self)
-	def getFsm(self, pNewState):
-		return self.m_pStateMachine.changeState(pNewState)
+	def getFsm(self):
+		return self.m_pStateMachine
 
 	#現在のロケーションを返す
 	#Stateの実装クラスから呼ばれる
