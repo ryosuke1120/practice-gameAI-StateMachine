@@ -14,16 +14,16 @@ class State(object):
 
     #状態変更の最初に１回だけ実行される
     @abstractmethod
-    def enter(self, fox):
+    def enter(self, state_t):
     	pass
  
      #その状態のときに何度も実行される
      #この中でchangeState(新しいState)が呼ばれ、状態が変更される
     @abstractmethod
-    def execute(self, fox):
+    def execute(self, state_t):
     	pass
  
     #次の状態に移行するときに一度だけ実行される
     @abstractmethod
-    def exit(self, fox):
+    def exit(self, state_t):
     	pass

@@ -17,24 +17,26 @@ import FindAndFireSomething
 class EatSomething(State.State):
 
 	#SFindAndFireSomethingから移動してきたときに一回だけ実行される
-	def enter(self, fox):
+	def enter(self, entity):
 		# if fox.getLocation() != LocationType.Field :
 		# 	fox.changeLocation(LocationType.Field)
 		# fox.setMessage("食べます")
-		fox.setMessage("スプラトゥーンをします")
+		entity.setMessage("スプラトゥーンをします")
 
 	#この状態の時に何度も実行される
 	#ランダムで取得した数値が3で割り切れる場合、お腹がいっぱいになり「眠る」状態に移行する
 	#そうでない場合はもう一度探す
-	def execute(self, fox):
-		fox.eatSomething(random.randint(1,2))
+	def execute(self, entity):
+		entity.eatSomething(random.randint(1,2))
 		# fox.setMessage("もぐもぐ")
-		fox.setMessage("ぴこぴこ")
-		if fox.isAte():
-			if fox.isStomachFull():
-				fox.changeState(Sleep.Sleep())
+		entity.setMessage("ぴこぴこ")
+		if entity.isAte():
+			if entity.isStomachFull():
+				# entity.changeState(Sleep.Sleep())
+				entity.getFsm(Sleep.Sleep())
 			else:
-				fox.changeState(FindAndFireSomething.FindAndFireSomething())
+				# entity.changeState(FindAndFireSomething.FindAndFireSomething())
+				entity.getFsm(FindAndFireSomething.FindAndFireSomething())
 
 		# random_num = random.randint(0,9)
 		# fox.setMessage("もぐもぐ")
@@ -45,5 +47,5 @@ class EatSomething(State.State):
 		# 	fox.changeState(SearchSomething.SearchSomething())
 
 	#「」状態に移行する前に一度だけ実行される
-	def exit(self, fox):
+	def exit(self, entity):
 		pass

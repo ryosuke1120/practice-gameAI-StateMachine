@@ -3,6 +3,8 @@
 
 import BaseGameEntity
 import SearchSomething
+import StateMachine
+import Sleep
 
 #キツネの状態を持つ
 
@@ -13,7 +15,9 @@ class Fox(BaseGameEntity.BaseGameEntity):
 		self.m_ID = m_ID
 		self.m_STOMACH_SIZE = m_STOMACH_SIZE
 		#現在の状態を保持
-		self.m_pCurrentState = SearchSomething.SearchSomething()
+		#self.m_pCurrentState = SearchSomething.SearchSomething()
+		#private var m_pStateMachine = StateMachine<Fox>( this, SearchSomething, Sleep, null )
+		self.m_pStateMachine = StateMachine.StateMachine(self, SearchSomething.SearchSomething(), Sleep.Sleep(), None)
 
 		#現在のお腹の空き具合：0が空腹状態
 		self.m_nowStomachDegree = 5
@@ -30,18 +34,23 @@ class Fox(BaseGameEntity.BaseGameEntity):
 		#TODO 表示するメッセージ（今後メッセージではなく画像等に変更されるもの）
 		self.m_message = "焼けるものを探します"
 
+#------------------------------------------------------------------------------------------------------------------------------------
+
 	#ループで実行される
 	def update(self):
-		self.m_pCurrentState.execute(self)
+		#self.m_pCurrentState.execute(self)
+		self.m_pStateMachine.update()
 
 	#状態を変更するときにStateの実装クラス（SearchSomething.ktなど）から呼ばれる
-	def changeState(self, pNewState):
-		#現在のステートのexit処理
-		self.m_pCurrentState.exit(self)
+	# def changeState(self, pNewState):
+	# 	#現在のステートのexit処理
+	# 	self.m_pCurrentState.exit(self)
 
-		#新しいステートに変更し、enter処理
-		self.m_pCurrentState = pNewState
-		self.m_pCurrentState.enter(self)
+	# 	#新しいステートに変更し、enter処理
+	# 	self.m_pCurrentState = pNewState
+	# 	self.m_pCurrentState.enter(self)
+	def getFsm(self, pNewState):
+		return self.m_pStateMachine.changeState(pNewState)
 
 	#現在のロケーションを返す
 	#Stateの実装クラスから呼ばれる
