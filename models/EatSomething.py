@@ -48,4 +48,8 @@ class EatSomething(State.State):
 
 	#「」状態に移行する前に一度だけ実行される
 	def exit(self, entity):
-		pass
+		if entity.isStomachFull():
+			# entity.changeState(Sleep.Sleep())
+			entity.setMessage("疲れたし、寝よう")
+		else:
+			entity.setMessage("うーん、まだゲームしたい")

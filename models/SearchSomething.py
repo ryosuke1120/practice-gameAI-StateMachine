@@ -30,5 +30,5 @@ class SearchSomething(State.State):
 			entity.getFsm().changeState(FindAndFireSomething.FindAndFireSomething())
 
 	#「焼く」状態に移行する前に一度だけ実行される
-	def exit(self, fox):
-		pass
+	def exit(self, entity):
+		entity.setMessage("ゲームでもするか")

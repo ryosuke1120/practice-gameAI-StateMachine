@@ -37,4 +37,4 @@ class FindAndFireSomething(State.State):
 
 	#「食べる」状態に移行する前に一度だけ実行される
 	def exit(self, entity):
-		pass
+		entity.setMessage("よし、準備できた")

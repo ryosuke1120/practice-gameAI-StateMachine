@@ -6,6 +6,10 @@ import State
 import Sleep
 
 class FoxGlobalState(State.State): 
+
+	def __init__(self):
+		self.random_num = 1
+
 	#開始時、あくびする
 	# override fun enter( entity_type: Fox ) {
 	#     entity_type.setMessage("ふあああ・・")
@@ -22,10 +26,10 @@ class FoxGlobalState(State.State):
 		else:
 			#ランダムであくびイベント発生
 			#val random = Random().nextInt()
-			random_num = random.randint(1,10)
+			self.random_num = random.randint(0,9)
 
-		if random_num % 10 == 0 :
-			entity.getFsm().changeState(Sleep.Sleep())
+		if self.random_num % 6 == 0 :
+			entity.getFsm().changeState(self)
 
 		# override fun execute( entity_type: Fox ) {
 		#     if( entity_type.getFsm().m_pCurrentState === this ){
@@ -43,7 +47,8 @@ class FoxGlobalState(State.State):
 		#     }
 		# }
 
-	#出るときつかれたなあ、とつぶやく
+	#出るときつかれたなあ、とつぶやく#
+	# 25行目でentity.getFsm().revertToPreviousState()を行うのでglobalStateのexitは絶対に呼ばれない仕様がある
 	def exit(self, entity):
 		entity.setMessage("なんだか疲れたなあ")
 		# override fun exit( entity_type: Fox ) {

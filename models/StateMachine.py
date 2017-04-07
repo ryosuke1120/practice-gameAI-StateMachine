@@ -43,7 +43,7 @@ class StateMachine(State.State):
         if self.m_nowExecute == self.NOW_EXECUTE:
             if self.m_pGlobalState != None:
                 self.m_pGlobalState.execute(self.m_pOwner)
-                if self.m_pCurrentState != self.m_pGlobalState and self.m_nowExecute == self.NOW_EXECUTE:
+                if (self.m_pCurrentState != self.m_pGlobalState) and (self.m_nowExecute == self.NOW_EXECUTE):
                     self.m_pCurrentState.execute(self.m_pOwner)
         else:
             self.changeState(self.m_pCurrentState)

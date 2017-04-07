@@ -16,7 +16,7 @@ class Sleep(State.State):
 	def enter(self, entity):
 		# if fox.getLocation() != LocationType.Field :
 		# 	fox.changeLocation(LocationType.Field)
-		entity.setMessage("満たされたので寝ます")
+		entity.setMessage("寝ます")
 
 	#この状態の時に何度も実行される
 	#ランダムで取得した数値が3で割り切れる場合、休まった状態になり「探す」状態に移行する
@@ -33,4 +33,4 @@ class Sleep(State.State):
 
 	#「探す」状態に移行する前に一度だけ実行される
 	def exit(self, entity):
-		pass
+		entity.setMessage("ふぁー、よく寝た")
