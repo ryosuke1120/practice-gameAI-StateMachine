@@ -88,7 +88,8 @@ class GameWorld(object):
     def observe(self):
         # self.draw()
         #print("self.myFox.update()→state_t_1（パラメータの状態）もアップデート")
-        self.screen = np.zeros((self.screen_n_rows, self.screen_n_cols))#サンプル
+        #self.screen = np.zeros((self.screen_n_rows, self.screen_n_cols))#サンプル1
+        self.screen = np.zeros((10))#サンプル2
         #print("state_t_1（パラメータの状態）, reward_t（手動による1or-1（なにもしない場合は0））, terminal（現在のステートがEXCUTEならFalse）を返す仕組みを作る")
         return self.screen, self.reward, self.terminal
 
