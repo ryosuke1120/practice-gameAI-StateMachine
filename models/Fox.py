@@ -6,6 +6,7 @@ import SearchSomething
 import StateMachine
 import Sleep
 import FoxGlobalState
+import BehaviorTree
 
 #キツネの状態を持つ
 
@@ -36,6 +37,9 @@ class Fox(BaseGameEntity.BaseGameEntity):
 
 		#TODO 表示するメッセージ（今後メッセージではなく画像等に変更されるもの）
 		self.m_message = "焼けるものを探します"
+
+		#FoxのBehaviorTree（BehaviorTreehaは現状Fox専用のクラス）
+		self.behavior_tree = BehaviorTree.BehaviorTree()
 
 #------------------------------------------------------------------------------------------------------------------------------------
 
@@ -126,3 +130,15 @@ class Fox(BaseGameEntity.BaseGameEntity):
 	#メッセージを設定する
 	def setMessage(self, newMessage):
 		self.m_message = newMessage
+
+	#ステートがconflictの際のaction
+	def conflict_act(self):
+		action_list = self.behavior_tree.get_conflict_behavior()
+		# print("conflict", action_list)
+		return action_list
+
+	#ステートがeffortの際のaction
+	def effort_act(self):
+		action_list = self.behavior_tree.get_effort_behavior()
+		# print("effort", action_list)
+		return action_list
