@@ -28,12 +28,15 @@ So we will show how to run the sample.
 ## How to run sample programs
 
 * *FSM*  
-`$ python3 ~~~~`
+`$ cd sample/FSM`  
+`$ python3 ~~~~`  
 
 * *BehaviorTree*  
-`$ python3 ~~~~`
+`$ cd sample/BehaviorTree`  
+`$ python3 SampleEnemy.py `
 
-* *ReinforcementLearning*  
+* *ReinforcementLearning* 
+`$ cd sample/ReinforcementLearning`  
 `$ python3 ~~~~`
 
 ## MyTask
