@@ -29,11 +29,19 @@ So we will show how to run the sample.
 
 * *FSM*  
 `$ cd sample/FSM`  
-`$ python3 ~~~~`  
+`$ pwd`  
+=>(your directory path)/proto-dev-gameAI-byNN/sample/FSM  
+Create the following paths by copy&paste, and through the Python path  
+`export PYTHONPATH="(your directory path)/proto-dev-gameAI-byNN/sample/FSM:$PYTHONPATH"`
+`$ python3 MainActivity.py`  
+When you execute it, sample FSM will start
+Please use [ctr + c] if you want to stop
 
 * *BehaviorTree*  
-`$ cd sample/BehaviorTree`  
+`$ cd sample/BehaviorTree` 
 `$ python3 SampleEnemy.py `
+Every time it is executed,  
+Action can be taken out from the behavior tree.  
 
 * *ReinforcementLearning* 
 `$ cd sample/ReinforcementLearning`  
