@@ -1,7 +1,7 @@
 # Prototype development of game AI using neural network
 
 ## Demo (current development situation)
-![result](https://github.com/ryosuke1120/proto-dev-gameAI-byNN/brob/media/sample.gif)
+![demo](https://cloud.githubusercontent.com/assets/23193177/24845297/da357b3c-1deb-11e7-9d8b-5174b803b5f2.gif)
 
 ## Effect
 I am a beginner developer of game AI,  
