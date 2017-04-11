@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import State
+import state
 import random
-import FindAndFireSomething
+import state_b
 
 #Stateの実装クラスのひとつ。
 #Singletonで状態は持たない。
  
-class SearchSomething(State.State):
+class StateA(state.State):
 
 	#SleepまたはEatSomethingから移動してきたときに一回だけ実行される
 	def enter(self, entity):
@@ -27,7 +27,7 @@ class SearchSomething(State.State):
 		if random_num % 3 == 0 :
 			#fox.changeState(FindAndFireSomething.FindAndFireSomething())
 			#entity_type.getFsm().changeState( FindAndFireSomething )
-			entity.getFsm().changeState(FindAndFireSomething.FindAndFireSomething())
+			entity.getFsm().changeState(state_b.StateB())
 
 	#「焼く」状態に移行する前に一度だけ実行される
 	def exit(self, entity):

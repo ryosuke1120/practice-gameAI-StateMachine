@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import time
-from models.Fox import *
+from models.fox import *
 
 
 # class MainActivity : AppCompatActivity() 

@@ -1,7 +1,7 @@
 import numpy as np
 
-from catch_ball import CatchBall
-from dqn_agent import DQNAgent
+from dodge_object import DodgeObject
+from agent import Agent
 
 
 if __name__ == "__main__":
@@ -9,8 +9,8 @@ if __name__ == "__main__":
     n_epochs = 1000
 
     # environment, agent
-    env = CatchBall()
-    agent = DQNAgent(env.enable_actions, env.name)
+    env = DodgeObject()
+    agent = Agent(env.enable_actions, env.name)
 
     # variables
     win = 0

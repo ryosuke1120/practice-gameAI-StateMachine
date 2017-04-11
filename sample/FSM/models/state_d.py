@@ -3,14 +3,14 @@
 
 #眠りが十分→SearchSomething
 
-import State
+import state
 import random
-import SearchSomething
+import state_a
 
 #Stateの実装クラスのひとつ。
 #Singletonで状態は持たない。
 
-class Sleep(State.State):
+class StateD(state.State):
 
 	#EatSomethingから移動してきたときに一回だけ実行される
 	def enter(self, entity):
@@ -25,7 +25,7 @@ class Sleep(State.State):
 		entity.digestSomething(random.randint(1,2))
 		if entity.isHungry():
 			# entity.changeState(SearchSomething.SearchSomething())
-			entity.getFsm().changeState(SearchSomething.SearchSomething())
+			entity.getFsm().changeState(state_a.StateA())
 
 		# random_num = random.randint(0,9)
 		# if random_num % 3 == 0 :

@@ -3,14 +3,14 @@
 
 #お肉が焼けるまでやいてやく→EatSomething
 
-import State
+import state
 import random
-import EatSomething
+import state_c
 
 #Stateの実装クラスのひとつ。
 #Singletonで状態は持たない。
 
-class FindAndFireSomething(State.State):
+class StateB(state.State):
 
 	#SearchSomethingから移動してきたときに一回だけ実行される
 	def enter(self, entity):
@@ -26,10 +26,10 @@ class FindAndFireSomething(State.State):
 		entity.fireSomething(random.randint(1,2))
 		# entity.setMessage("がちゃがちゃ")
 		#ビヘイビアツリーによる行動
-		entity.setMessage(entity.conflict_act())
+		entity.setMessage("がちゃがちゃ")
 		if entity.isDonenessFull():
 			#entity.changeState(EatSomething.EatSomething())
-			entity.getFsm().changeState(EatSomething.EatSomething())
+			entity.getFsm().changeState(state_c.StateC())
 
 		# random_num = random.randint(0,9)
 		# fox.setMessage("じゅーじゅー")

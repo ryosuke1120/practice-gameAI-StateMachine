@@ -5,16 +5,15 @@
 #おななが減ってたら→SearchSomething
 #お腹がいっぱいなら→Sleep
 
-import State
+import state
 import random
-import SearchSomething
-import Sleep
-import FindAndFireSomething
+import state_d
+import state_b
 
 #Stateの実装クラスのひとつ。
 #Singletonで状態は持たない。
 
-class EatSomething(State.State):
+class StateC(state.State):
 
 	#SFindAndFireSomethingから移動してきたときに一回だけ実行される
 	def enter(self, entity):
@@ -33,10 +32,10 @@ class EatSomething(State.State):
 		if entity.isAte():
 			if entity.isStomachFull():
 				# entity.changeState(Sleep.Sleep())
-				entity.getFsm().changeState(Sleep.Sleep())
+				entity.getFsm().changeState(state_d.StateD())
 			else:
 				# entity.changeState(FindAndFireSomething.FindAndFireSomething())
-				entity.getFsm().changeState(FindAndFireSomething.FindAndFireSomething())
+				entity.getFsm().changeState(state_b.StateB())
 
 		# random_num = random.randint(0,9)
 		# fox.setMessage("もぐもぐ")
