@@ -32,7 +32,7 @@ So we will show how to run the sample.
 `$ pwd`  
 `=>(your directory path)/proto-dev-gameAI-byNN/sample/FSM`    
 Create the following paths by copy&paste, and through the Python path.  
-`export PYTHONPATH="(your directory path)/proto-dev-gameAI-byNN/sample/FSM:$PYTHONPATH"`  
+`$ export PYTHONPATH="(your directory path)/proto-dev-gameAI-byNN/sample/FSM:$PYTHONPATH"`  
 `$ python3 MainActivity.py`    
 When you execute it, sample FSM will start.  
 Please use [ctr + c] if you want to stop.  
