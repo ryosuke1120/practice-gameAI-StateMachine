@@ -3,7 +3,6 @@
 
 import behavior_tree
 
-#要最適化
 class SampleEnemy(object):
 
 	def __init__(self):
@@ -11,12 +10,10 @@ class SampleEnemy(object):
 
 	def enemy_conflict_act(self):
 		action_list = self.behavior_tree.get_conflict_behavior()
-		# print("conflict", action_list)
 		return action_list
 
 	def enemy_effort_act(self):
 		action_list = self.behavior_tree.get_effort_behavior()
-		# print("effort", action_list)
 		return action_list
 		
 if __name__ == "__main__":

@@ -4,38 +4,32 @@
 import random
 
 class Box(object):
-#attr_accessor :selector, :list
 
 	def __init__(self):
 		self.selector = "確率的選択"
 		self.a_list = []
 
 	def add_list(self, bhv):
-		#@a_list << node
 		self.a_list.append(bhv)
 
 	def get_by_selector(self):
-		# children = @a_list.find_all{|n|n.executable?}
-		# children = self.a_list.find_all{|n|n.executable?}
-		#children = filter((lambda bhv: bhv.executable() == True), self.a_list)
 		children = [bhv for bhv in self.a_list if bhv.executable() == True]
 		if self.selector in {'確率的選択'}:
-			#sampleメソッドは、配列の要素を1つランダムに返します。配列が空の場合はnilを返します。
 			if children != []:
 				a_selected_behavior	 = random.choice(children)
 			else:
 				a_selected_behavior = []
 		elif self.selector in {'優先度リスト'}:
-			# 優先度の高いもの順
+			# 優先度の高いもの順（未実装）
 			pass
 		elif self.selector in {'シーケンシャル'}:
-			# 決まった順に
+			# 決まった順に（未実装）
 			pass
 		elif self.selector in {'シーケンシャルルーピング'}:
-			# 決まった順に繰り返す
+			# 決まった順に繰り返す（未実装）
 			pass
 		elif self.selector in {'オンオフ'}:
-			# ランダムだけど一度選択したものは選択しない
+			# ランダムだけど一度選択したものは選択しない（未実装）
 			pass
 
 		return a_selected_behavior

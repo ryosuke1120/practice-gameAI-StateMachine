@@ -5,16 +5,16 @@ import base_game_entity
 import state_a
 import state_machine
 import state_d
-import fox_global_state
+import character_global_state
 
-class Fox(base_game_entity.BaseGameEntity): 
+class Character(base_game_entity.BaseGameEntity): 
 
 	def __init__(self, m_ID, m_STOMACH_SIZE):
 
 		self.m_ID = m_ID
 		self.m_STOMACH_SIZE = m_STOMACH_SIZE
 
-		self.m_pStateMachine = state_machine.StateMachine(self, state_a.StateA(), state_d.StateD(), fox_global_state.FoxGlobalState())
+		self.m_pStateMachine = state_machine.StateMachine(self, state_a.StateA(), state_d.StateD(), character_global_state.CharacterGlobalState())
 
 		self.m_nowStomachDegree = 5
 

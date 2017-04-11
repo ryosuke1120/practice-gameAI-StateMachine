@@ -2,22 +2,19 @@
 # -*- coding: utf-8 -*-
 
 import time
-from models.fox import *
+from models.character import *
 
-
-# class MainActivity : AppCompatActivity() 
 class MainActivity(object): 
 
 	def __init__(self):
-		self.myFox = Fox(1, 10)
+		self.myCharacter = Character(1, 10)
  
-	def run_fox(self): 
-		self.myFox.update()
-		# fox_message.text = myFox.getMessage()
-		print(self.myFox.getMessage())
+	def run_character(self): 
+		self.myCharacter.update()
+		print(self.myCharacter.getMessage())
 
 if __name__ == "__main__":
 	a_game = MainActivity()
 	while True:
-		a_game.run_fox()
+		a_game.run_character()
 		time.sleep(1)
