@@ -43,7 +43,7 @@ Action can be taken out from the behavior tree.
 
 * **ReinforcementLearning**  
 `$ cd sample/ReinforcementLearning`  
-`$ python3 ~~~~`  
+`$ python3 sample_rl.py`  
 
 ## MyTask
 * Global state transition bug (behavior tree)  
