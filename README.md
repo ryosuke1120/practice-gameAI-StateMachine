@@ -13,7 +13,8 @@ because I want to use a tensor flow framework.
 However, Not going to use Python only. 
 Finally, I am planning to rewrite it simply in a programming language (eg C ++) that has affinity with the game.  
 
-Again, I am a beginner,　and there are few samples of the game AI program.  
+Again, I am a beginner.  
+And there are few samples of the game AI program.  
 Therefore, if you have an expert, I would like to ask for your help at any time. :)  
 
 As an initial goal,  
