@@ -37,7 +37,7 @@ Please use [ctr + c] if you want to stop.
 
 * **BehaviorTree**  
 `$ cd sample/BehaviorTree`  
-`$ python3 SampleEnemy.py `    
+`$ python3 sample_enemy.py`    
 Every time it is executed,  
 Action can be taken out from the behavior tree.  
 
