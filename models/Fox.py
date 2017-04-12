@@ -155,3 +155,41 @@ class Fox(BaseGameEntity.BaseGameEntity):
 	#neural行動を起こし、学習する
 	def train_act(self):
 		self.get_neural().train()
+
+	#get next precept p
+	def get_next_precept(self):
+		pass
+
+	#世界を観察する
+	def observe(self):
+		pass
+
+	#belief revision function
+	#Beliefs : エージェントが世界について持っている情報
+	def belief(self, initial_belief, precept):
+		# return belief
+		pass
+
+	#beliefsとinitial_intentionsからdesiresを返す
+	#Desires : 理想的な世界の代理人がもたらしたいと望んでいる事柄の状態
+	def options(self, belief, initial_intentions):
+		# return desire
+		pass
+
+	#beliefからintentionsをかえす
+	#Intentions : エージェントが達成することを約束した欲求 
+	def filter(self, belief):
+		#return intention
+		pass
+
+	#beliefとintentionから実行すべき内容を計画(pi)する
+	def plan(self, belief, intention):
+		# return action_list
+		pass
+
+	#Piを実行する
+	def execute_pi(self, pi):
+		pass
+
+
+
