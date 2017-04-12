@@ -6,6 +6,8 @@ import numpy as np
 import GameWorld
 from dqn_agent import DQNAgent
 
+import time
+
 class Neural(object):
 
     def __init__(self):
@@ -79,7 +81,10 @@ class Neural(object):
         #今は使用しない
         # agent.save_model()
 
-if __name__ == "__main__":
-    test = Neural()
-    test.train()
+# if __name__ == "__main__":
+#     test = Neural()
+#     while True:
+#         test.train()
+#         time.sleep(1)
+
 

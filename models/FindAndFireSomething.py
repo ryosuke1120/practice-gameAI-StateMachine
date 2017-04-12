@@ -24,9 +24,11 @@ class FindAndFireSomething(State.State):
 	#ランダムで取得した数値が3で割り切れる場合、お肉がやけて「食べる」状態に移行する
 	def execute(self, entity):
 		entity.fireSomething(random.randint(1,2))
-		# entity.setMessage("がちゃがちゃ")
+		entity.setMessage("がちゃがちゃ")
 		#ビヘイビアツリーによる行動
-		entity.setMessage(entity.conflict_act())
+		#entity.setMessage(entity.conflict_act())
+		#ニューラルネットワークによる行動
+		entity.train_act()	
 		if entity.isDonenessFull():
 			#entity.changeState(EatSomething.EatSomething())
 			entity.getFsm().changeState(EatSomething.EatSomething())

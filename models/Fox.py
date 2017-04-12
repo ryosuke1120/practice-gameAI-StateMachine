@@ -8,6 +8,8 @@ import Sleep
 import FoxGlobalState
 import BehaviorTree
 
+import neural
+
 #キツネの状態を持つ
 
 class Fox(BaseGameEntity.BaseGameEntity): 
@@ -40,6 +42,9 @@ class Fox(BaseGameEntity.BaseGameEntity):
 
 		#FoxのBehaviorTree（BehaviorTreehaは現状Fox専用のクラス）
 		self.behavior_tree = BehaviorTree.BehaviorTree()
+
+		#Foxのニューラルネットワーク（neuralはFoxの専用クラス）
+		self.neural = neural.Neural()
 
 #------------------------------------------------------------------------------------------------------------------------------------
 
@@ -142,3 +147,11 @@ class Fox(BaseGameEntity.BaseGameEntity):
 		action_list = self.behavior_tree.get_effort_behavior()
 		# print("effort", action_list)
 		return action_list
+
+	#neuralを取得する
+	def get_neural(self):
+		return self.neural
+
+	#neural行動を起こし、学習する
+	def train_act(self):
+		self.get_neural().train()
