@@ -46,11 +46,13 @@ class GameWorld(object):
         """
         # update player position
         if action == self.enable_actions[1]:
-            print("move left")
+            # print("move left")
+            print("test : Action-A")
             # move left
             # self.player_col = max(0, self.player_col - 1)
         elif action == self.enable_actions[2]:
-            print("move right")
+            # print("move right")
+            print("test : Action-B")
             # move right
             # self.player_col = min(self.player_col + 1, self.screen_n_cols - self.player_length)
         else:
@@ -70,7 +72,8 @@ class GameWorld(object):
             #ゲーム終了フラグ設定
             self.terminal = True
 
-            #ここは[0:罰を与えるButtonを押す][1:何もしない][2:褒めるButtonを押す]によって分岐予定
+            #[0:罰を与えるButtonを押す][1:何もしない][2:褒めるButtonを押す]によって分岐予定
+            #現在はランダムで仮実装
             self.random_num_oth = random.randint(0,2)
             if self.random_num_oth == 0 :
                 #罰を与える

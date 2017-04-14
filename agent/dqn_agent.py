@@ -12,7 +12,7 @@ class DQNAgent:
 
     def __init__(self, enable_actions, environment_name):
         # parameters
-        self.name = os.path.splitext(os.path.basename(__file__))[0]
+        # self.name = os.path.splitext(os.path.basename(__file__))[0]
         self.environment_name = environment_name
         self.enable_actions = enable_actions
         self.n_actions = len(self.enable_actions)

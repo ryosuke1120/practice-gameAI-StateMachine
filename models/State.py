@@ -3,14 +3,9 @@
 
 from abc import ABCMeta, abstractmethod
 
-# 抽象クラス
+#abstract class
 class State(object):
     __metaclass__ = ABCMeta
-
-    # # 抽象メソッド
-    # @abstractmethod
-    # def sample_method(self):
-    #     pass
 
     #状態変更の最初に１回だけ実行される
     @abstractmethod

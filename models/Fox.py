@@ -10,8 +10,6 @@ import BehaviorTree
 
 import neural
 
-#キツネの状態を持つ
-
 class Fox(BaseGameEntity.BaseGameEntity): 
 
 	def __init__(self, m_ID, m_STOMACH_SIZE):
@@ -20,9 +18,7 @@ class Fox(BaseGameEntity.BaseGameEntity):
 		self.m_STOMACH_SIZE = m_STOMACH_SIZE
 		#現在の状態を保持
 		#self.m_pCurrentState = SearchSomething.SearchSomething()
-		#private var m_pStateMachine = StateMachine<Fox>( this, SearchSomething, Sleep, null )
 		#self.m_pStateMachine = StateMachine.StateMachine(self, SearchSomething.SearchSomething(), Sleep.Sleep(), None)
-		#private var m_pStateMachine = StateMachine<Fox>( this, SearchSomething, Sleep, FoxGlobalState )
 		self.m_pStateMachine = StateMachine.StateMachine(self, SearchSomething.SearchSomething(), Sleep.Sleep(), FoxGlobalState.FoxGlobalState())
 
 		#現在のお腹の空き具合：0が空腹状態
@@ -46,14 +42,12 @@ class Fox(BaseGameEntity.BaseGameEntity):
 		#Foxのニューラルネットワーク（neuralはFoxの専用クラス）
 		self.neural = neural.Neural()
 
-#------------------------------------------------------------------------------------------------------------------------------------
-
 	#ループで実行される
 	def update(self):
 		#self.m_pCurrentState.execute(self)
 		self.m_pStateMachine.update()
 
-	#状態を変更するときにStateの実装クラス（SearchSomething.ktなど）から呼ばれる
+	#状態を変更するときにStateの実装クラス（SearchSomethingなど）から呼ばれる
 	# def changeState(self, pNewState):
 	# 	#現在のステートのexit処理
 	# 	self.m_pCurrentState.exit(self)
@@ -75,7 +69,7 @@ class Fox(BaseGameEntity.BaseGameEntity):
 		self.m_location = newLocation
 
 	#焼き終わったかを返す
-	#Stateの実装クラスであるFindAndFireSomething.ktから呼ばれる
+	#Stateの実装クラスであるFindAndFireSomethingから呼ばれる
 	def isDonenessFull(self):
 		if self.m_donenessLevel <= 0:
 			return True
@@ -83,15 +77,18 @@ class Fox(BaseGameEntity.BaseGameEntity):
 			return False
 
 	#焼く
+	#FindAndFireSomethingから呼ばれる
 	def fireSomething(self, fireCount):
 		self.m_donenessLevel -= fireCount
 
 	#食べる
+	#EatSomethingから呼ばれる
 	def eatSomething(self, eatCount):
 		self.m_eatSize -= eatCount
 		self.m_nowStomachDegree += eatCount
 
 	#食べ終わったかどうかを返す
+	#EatSomethingから呼ばれる
 	def isAte(self):
 		if self.m_eatSize <= 0:
 			return True
@@ -99,19 +96,20 @@ class Fox(BaseGameEntity.BaseGameEntity):
 			return False
 
 	#お腹がいっぱいかどうかを返す
-	#（EatSomethingからSleep・SearchSomethingのどちらに移行するかを判定する際に呼ばれる）
+	#EatSomethingからSleep・SearchSomethingのどちらに移行するかを判定する際に呼ばれる
 	def isStomachFull(self):
 		if self.m_nowStomachDegree >= self.m_STOMACH_SIZE:
 			return True
 		else: 
 			return False
 
-	#消化 
+	#消化
+	#Sleepから呼ばれる
 	def digestSomething(self, digestCount):
 		self.m_nowStomachDegree -= digestCount
 
 	#お腹がすいたかどうかを返す
-	#（SleepからSearchSomethingに移行するかの判定で呼ばれる）
+	#SleepからSearchSomethingに移行するかの判定で呼ばれる
 	def isHungry(self):
 		if self.m_nowStomachDegree <= 0:
 			return True
@@ -128,7 +126,7 @@ class Fox(BaseGameEntity.BaseGameEntity):
 		self.m_eatSize = size
 
 	#メッセージを取得する
-	#（MainActivityから呼ばれる）
+	#MainActivityから呼ばれる
 	def getMessage(self):
 		return self.m_message
 
@@ -156,40 +154,42 @@ class Fox(BaseGameEntity.BaseGameEntity):
 	def train_act(self):
 		self.get_neural().train()
 
-	#get next precept p
-	def get_next_precept(self):
-		pass
+	#--------------------未実装--------------------
 
-	#世界を観察する
-	def observe(self):
-		pass
+	# #get next precept p
+	# def get_next_precept(self):
+	# 	pass
 
-	#belief revision function
-	#Beliefs : エージェントが世界について持っている情報
-	def belief(self, initial_belief, precept):
-		# return belief
-		pass
+	# #世界を観察する
+	# def observe(self):
+	# 	pass
 
-	#beliefsとinitial_intentionsからdesiresを返す
-	#Desires : 理想的な世界の代理人がもたらしたいと望んでいる事柄の状態
-	def options(self, belief, initial_intentions):
-		# return desire
-		pass
+	# #belief revision function
+	# #Beliefs : エージェントが世界について持っている情報
+	# def belief(self, initial_belief, precept):
+	# 	# return belief
+	# 	pass
 
-	#beliefからintentionsをかえす
-	#Intentions : エージェントが達成することを約束した欲求 
-	def filter(self, belief):
-		#return intention
-		pass
+	# #beliefsとinitial_intentionsからdesiresを返す
+	# #Desires : 理想的な世界の代理人がもたらしたいと望んでいる事柄の状態
+	# def options(self, belief, initial_intentions):
+	# 	# return desire
+	# 	pass
 
-	#beliefとintentionから実行すべき内容を計画(pi)する
-	def plan(self, belief, intention):
-		# return action_list
-		pass
+	# #beliefからintentionsをかえす
+	# #Intentions : エージェントが達成することを約束した欲求 
+	# def filter(self, belief):
+	# 	#return intention
+	# 	pass
 
-	#Piを実行する
-	def execute_pi(self, pi):
-		pass
+	# #beliefとintentionから実行すべき内容を計画(pi)する
+	# def plan(self, belief, intention):
+	# 	# return action_list
+	# 	pass
+
+	# #Piを実行する
+	# def execute_pi(self, pi):
+	# 	pass
 
 
 

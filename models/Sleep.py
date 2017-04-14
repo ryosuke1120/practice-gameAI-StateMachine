@@ -1,25 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#眠りが十分→SearchSomething
+#お腹が減ったならば（isHungry = true）→SearchSomething
 
 import State
 import random
 import SearchSomething
 
-#Stateの実装クラスのひとつ。
-#Singletonで状態は持たない。
-
 class Sleep(State.State):
 
-	#EatSomethingから移動してきたときに一回だけ実行される
+	#EatSomethingから遷移した際に一回だけ実行される
 	def enter(self, entity):
-		# if fox.getLocation() != LocationType.Field :
-		# 	fox.changeLocation(LocationType.Field)
+		# if entity.getLocation() != LocationType.Field :
+		# 	entity.changeLocation(LocationType.Field)
 		entity.setMessage("寝ます")
 
-	#この状態の時に何度も実行される
-	#ランダムで取得した数値が3で割り切れる場合、休まった状態になり「探す」状態に移行する
+	#条件が満たされるまで実行される
 	def execute(self, entity):
 		entity.setMessage("ぐーぐー")
 		entity.digestSomething(random.randint(1,2))
@@ -27,10 +23,6 @@ class Sleep(State.State):
 			# entity.changeState(SearchSomething.SearchSomething())
 			entity.getFsm().changeState(SearchSomething.SearchSomething())
 
-		# random_num = random.randint(0,9)
-		# if random_num % 3 == 0 :
-		# 	fox.changeState(SearchSomething.SearchSomething())
-
-	#「探す」状態に移行する前に一度だけ実行される
+	#SearchSomethingに遷移する際に一度だけ実行される
 	def exit(self, entity):
 		entity.setMessage("ふぁー、よく寝た")

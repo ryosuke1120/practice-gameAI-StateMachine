@@ -4,8 +4,6 @@
 import time
 from models.Fox import *
 
-
-# class MainActivity : AppCompatActivity() 
 class MainActivity(object): 
 
 	def __init__(self):

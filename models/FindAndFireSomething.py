@@ -1,29 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#お肉が焼けるまでやいてやく→EatSomething
+#お肉が焼けたならば（isDonenessFull = true）→EatSomething
 
 import State
 import random
 import EatSomething
 
-#Stateの実装クラスのひとつ。
-#Singletonで状態は持たない。
-
 class FindAndFireSomething(State.State):
 
-	#SearchSomethingから移動してきたときに一回だけ実行される
+	#SearchSomethingから遷移した際に一回だけ実行される
 	def enter(self, entity):
-		# if fox.getLocation() != LocationType.Field :
-		# 	fox.changeLocation(LocationType.Field)
-		# fox.setMessage("発見したのできつね色に焼きます")
+		# if entity.getLocation() != LocationType.Field :
+		# 	entity.changeLocation(LocationType.Field)
+		# entity.setMessage("発見したのできつね色に焼きます")
 		entity.setMessage("ゲームの準備をします")
 		entity.setGameSize(random.randint(5,10))
 
-	#この状態の時に何度も実行される
-	#ランダムで取得した数値が3で割り切れる場合、お肉がやけて「食べる」状態に移行する
+	#条件が満たされるまで実行される
 	def execute(self, entity):
 		entity.fireSomething(random.randint(1,2))
+		# entity.setMessage("じゅーじゅー")
 		entity.setMessage("がちゃがちゃ")
 		#ビヘイビアツリーによる行動
 		#entity.setMessage(entity.conflict_act())
@@ -33,12 +30,6 @@ class FindAndFireSomething(State.State):
 			#entity.changeState(EatSomething.EatSomething())
 			entity.getFsm().changeState(EatSomething.EatSomething())
 
-		# random_num = random.randint(0,9)
-		# fox.setMessage("じゅーじゅー")
-
-		# if random_num % 3 == 0 :
-		# 	fox.changeState(EatSomething.EatSomething())
-
-	#「食べる」状態に移行する前に一度だけ実行される
+	#EatSomethingに遷移する際に一度だけ実行される
 	def exit(self, entity):
 		entity.setMessage("よし、準備できた")

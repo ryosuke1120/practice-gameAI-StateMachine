@@ -29,16 +29,6 @@ class Neural(object):
         pass
 
     def train(self):
-        # if __name__ == "__main__":
-        # parameters
-        # self.n_epochs = 1000
-
-        # # environment, agent
-        # self.env = GameWorld.GameWorld()
-        # self.agent = DQNAgent(self.env.enable_actions, self.env.name)
-
-        # # variables
-        # self.win = 0
 
         for e in range(self.n_epochs):
             # reset
@@ -80,11 +70,3 @@ class Neural(object):
         # save model
         #今は使用しない
         # agent.save_model()
-
-# if __name__ == "__main__":
-#     test = Neural()
-#     while True:
-#         test.train()
-#         time.sleep(1)
-
-
