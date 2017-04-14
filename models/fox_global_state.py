@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import random
-import State
-import Sleep
+import state
 
-class FoxGlobalState(State.State): 
+class FoxGlobalState(state.State): 
 
 	def __init__(self):
 		self.random_num = 1

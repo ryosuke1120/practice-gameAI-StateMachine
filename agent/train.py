@@ -1,6 +1,6 @@
 import numpy as np
 
-from catch_ball import CatchBall
+import game_world
 from dqn_agent import DQNAgent
 
 
@@ -9,7 +9,7 @@ if __name__ == "__main__":
     n_epochs = 1000
 
     # environment, agent
-    env = CatchBall()
+    env = game_world.GameWorld()
     agent = DQNAgent(env.enable_actions, env.name)
 
     # variables

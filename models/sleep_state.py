@@ -3,11 +3,11 @@
 
 #お腹が減ったならば（isHungry = true）→SearchSomething
 
-import State
+import state
 import random
-import SearchSomething
+import search_state
 
-class Sleep(State.State):
+class SleepState(state.State):
 
 	#EatSomethingから遷移した際に一回だけ実行される
 	def enter(self, entity):
@@ -21,7 +21,7 @@ class Sleep(State.State):
 		entity.digestSomething(random.randint(1,2))
 		if entity.isHungry():
 			# entity.changeState(SearchSomething.SearchSomething())
-			entity.getFsm().changeState(SearchSomething.SearchSomething())
+			entity.getFsm().changeState(search_state.SearchState())
 
 	#SearchSomethingに遷移する際に一度だけ実行される
 	def exit(self, entity):

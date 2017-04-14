@@ -3,11 +3,11 @@
 
 #お肉が焼けたならば（isDonenessFull = true）→EatSomething
 
-import State
+import state
 import random
-import EatSomething
+import eat_state
 
-class FindAndFireSomething(State.State):
+class FireState(state.State):
 
 	#SearchSomethingから遷移した際に一回だけ実行される
 	def enter(self, entity):
@@ -28,7 +28,7 @@ class FindAndFireSomething(State.State):
 		entity.train_act()	
 		if entity.isDonenessFull():
 			#entity.changeState(EatSomething.EatSomething())
-			entity.getFsm().changeState(EatSomething.EatSomething())
+			entity.getFsm().changeState(eat_state.EatState())
 
 	#EatSomethingに遷移する際に一度だけ実行される
 	def exit(self, entity):

@@ -2,17 +2,17 @@
 # -*- coding: utf-8 -*-
 
 import time
-from models.Fox import *
+from models.fox import *
 
 class MainActivity(object): 
 
 	def __init__(self):
-		self.myFox = Fox(1, 10)
+		self.my_fox = Fox(1, 10)
  
 	def run_fox(self): 
-		self.myFox.update()
+		self.my_fox.update()
 		# fox_message.text = myFox.getMessage()
-		print(self.myFox.getMessage())
+		print(self.my_fox.getMessage())
 
 if __name__ == "__main__":
 	a_game = MainActivity()

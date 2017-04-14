@@ -3,7 +3,7 @@
 
 import numpy as np
 
-import GameWorld
+import game_world
 from dqn_agent import DQNAgent
 
 import time
@@ -16,7 +16,7 @@ class Neural(object):
         self.n_epochs = 1
 
         # environment, agent
-        self.env = GameWorld.GameWorld()
+        self.env = game_world.GameWorld()
         self.agent = DQNAgent(self.env.enable_actions, self.env.name)
 
         # variables

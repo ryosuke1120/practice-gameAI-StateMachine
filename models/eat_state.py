@@ -5,13 +5,13 @@
 #お腹が満たされているなら（isStomachFull = true）→SleepState
 #お腹が満たされていないなら（else）→SearchSomethingState
 
-import State
+import state
 import random
-import SearchSomething
-import Sleep
-import FindAndFireSomething
+import search_state
+import sleep_state
+import fire_state
 
-class EatSomething(State.State):
+class EatState(state.State):
 
 	#FindAndFireSomethingから遷移した際に一度だけ実行される
 	def enter(self, entity):
@@ -28,10 +28,10 @@ class EatSomething(State.State):
 		if entity.isAte():
 			if entity.isStomachFull():
 				# entity.changeState(Sleep.Sleep())
-				entity.getFsm().changeState(Sleep.Sleep())
+				entity.getFsm().changeState(sleep_state.SleepState())
 			else:
 				# entity.changeState(FindAndFireSomething.FindAndFireSomething())
-				entity.getFsm().changeState(FindAndFireSomething.FindAndFireSomething())
+				entity.getFsm().changeState(fire_state.FireState())
 
 	#Sleepもしくは、SearchSomethingに遷移する際に一度だけ実行される
 	def exit(self, entity):

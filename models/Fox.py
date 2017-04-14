@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import BaseGameEntity
-import SearchSomething
-import StateMachine
-import Sleep
-import FoxGlobalState
-import BehaviorTree
+import base_game_entity
+import search_state
+import state_machine
+import sleep_state
+import fox_global_state
+import behavior_tree
 
 import neural
 
-class Fox(BaseGameEntity.BaseGameEntity): 
+class Fox(base_game_entity.BaseGameEntity): 
 
 	def __init__(self, m_ID, m_STOMACH_SIZE):
 
@@ -19,7 +19,7 @@ class Fox(BaseGameEntity.BaseGameEntity):
 		#現在の状態を保持
 		#self.m_pCurrentState = SearchSomething.SearchSomething()
 		#self.m_pStateMachine = StateMachine.StateMachine(self, SearchSomething.SearchSomething(), Sleep.Sleep(), None)
-		self.m_pStateMachine = StateMachine.StateMachine(self, SearchSomething.SearchSomething(), Sleep.Sleep(), FoxGlobalState.FoxGlobalState())
+		self.m_pStateMachine = state_machine.StateMachine(self, search_state.SearchState(), sleep_state.SleepState(), fox_global_state.FoxGlobalState())
 
 		#現在のお腹の空き具合：0が空腹状態
 		self.m_nowStomachDegree = 5
@@ -37,7 +37,7 @@ class Fox(BaseGameEntity.BaseGameEntity):
 		self.m_message = "焼けるものを探します"
 
 		#FoxのBehaviorTree（BehaviorTreehaは現状Fox専用のクラス）
-		self.behavior_tree = BehaviorTree.BehaviorTree()
+		self.behavior_tree = behavior_tree.BehaviorTree()
 
 		#Foxのニューラルネットワーク（neuralはFoxの専用クラス）
 		self.neural = neural.Neural()

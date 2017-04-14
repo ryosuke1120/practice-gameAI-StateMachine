@@ -3,11 +3,11 @@
 
 #ランダム→FindAndFireSomething
 
-import State
+import state
 import random
-import FindAndFireSomething
+import fire_state
  
-class SearchSomething(State.State):
+class SearchState(state.State):
 
 	#SleepまたはEatSomethingから遷移した際に一回だけ実行される
 	def enter(self, entity):
@@ -24,7 +24,7 @@ class SearchSomething(State.State):
 
 		if random_num % 3 == 0 :
 			#entity.changeState(FindAndFireSomething.FindAndFireSomething())
-			entity.getFsm().changeState(FindAndFireSomething.FindAndFireSomething())
+			entity.getFsm().changeState(fire_state.FireState())
 
 	#FindAndFireSomethingに遷移する際に一度だけ実行される
 	def exit(self, entity):

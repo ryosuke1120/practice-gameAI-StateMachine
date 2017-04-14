@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 
 #import pydot
-import Box
+import box
 
-class Behavior():
+class Behavior(object):
+	
 	def __init__(self, name):
 		self.name = name
-		self.box = Box.Box() # 子ビヘイビアはただの配列ではなく「選択方法」を知っている配列でないといけない
+		self.box = box.Box() # 子ビヘイビアはただの配列ではなく「選択方法」を知っている配列でないといけない
 
 	def add_behavior(self, bhv):
 		self.box.add_list(bhv)

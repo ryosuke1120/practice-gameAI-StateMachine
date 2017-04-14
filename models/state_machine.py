@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import State
+import state
 
-class StateMachine(State.State):
+class StateMachine(state.State):
 
     def __init__(self, m_pOwner, m_pCurrentState ,m_pPreviousState, m_pGlobalState):
         self.m_pOwner = m_pOwner
