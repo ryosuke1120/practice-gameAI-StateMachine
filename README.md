@@ -10,6 +10,9 @@ If your environment does not work, please use the Vagrant file as below.
 `$ vagrant box add trusty64 https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box`  
 `$ vagrant up`  
 `$ vagrant ssh`  
+`$ export PYTHONPATH="/home/vagrant/proto-dev-gameAI-byNN/agent:$PYTHONPATH"`  
+`$ export PYTHONPATH="/home/vagrant/proto-dev-gameAI-byNN/behavior:$PYTHONPATH"`  
+`$ export PYTHONPATH="/home/vagrant/proto-dev-gameAI-byNN/models:$PYTHONPATH"`  
 
 ## Effect
 I am a beginner developer of game AI,  
