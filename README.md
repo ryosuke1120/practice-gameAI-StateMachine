@@ -3,6 +3,14 @@
 ## Demo (current development situation)
 ![demo](https://cloud.githubusercontent.com/assets/23193177/24845297/da357b3c-1deb-11e7-9d8b-5174b803b5f2.gif)
 
+## How to run  
+`$ python3 main_activity.py`
+
+If your environment does not work, please use the Vagrant file as below.  
+`$ vagrant box add trusty64 https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box`  
+`$ vagrant up`  
+`$ vagrant ssh`  
+
 ## Effect
 I am a beginner developer of game AI,  
 because I started development in April 2017. :)  
@@ -25,7 +33,7 @@ So we will show how to run the sample.
 
 ## How to run sample programs
 
-* **FSM**  
+* **FiniteStateMachine**  
 `$ cd sample/FSM`  
 `$ pwd`  
 `=>(your directory path)/proto-dev-gameAI-byNN/sample/FSM`    
