@@ -11,8 +11,6 @@ class SleepState(state.State):
 
 	#EatSomethingから遷移した際に一回だけ実行される
 	def enter(self, entity):
-		# if entity.getLocation() != LocationType.Field :
-		# 	entity.changeLocation(LocationType.Field)
 		entity.setMessage("寝ます")
 
 	#条件が満たされるまで実行される

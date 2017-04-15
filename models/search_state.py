@@ -11,8 +11,6 @@ class SearchState(state.State):
 
 	#SleepまたはEatSomethingから遷移した際に一回だけ実行される
 	def enter(self, entity):
-		# if entity.getLocation() != LocationType.Field :
-		# 	entity.changeLocation(LocationType.Field)
 		# entity.setMessage("捜索を開始します")
 		entity.setMessage("活動を開始します")
 

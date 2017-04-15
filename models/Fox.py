@@ -30,10 +30,10 @@ class Fox(base_game_entity.BaseGameEntity):
 		#獲物の大きさ（大きいほど食べるのに時間がかかる）
 		self.m_eatSize = 0
 
-		#TODO 今いる場所（今回は利用しない）一旦文字列代入
-		self.m_location = "LocationType.Field"
+		# # 今いる場所（未使用）
+		# self.m_location = "LocationType.Field"
 
-		#TODO 表示するメッセージ（今後メッセージではなく画像等に変更されるもの）
+		#表示するメッセージ（今後メッセージではなく画像等に変更されるもの）
 		self.m_message = "焼けるものを探します"
 
 		#FoxのBehaviorTree（BehaviorTreehaは現状Fox専用のクラス）

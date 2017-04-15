@@ -11,8 +11,6 @@ class FireState(state.State):
 
 	#SearchSomethingから遷移した際に一回だけ実行される
 	def enter(self, entity):
-		# if entity.getLocation() != LocationType.Field :
-		# 	entity.changeLocation(LocationType.Field)
 		# entity.setMessage("発見したのできつね色に焼きます")
 		entity.setMessage("ゲームの準備をします")
 		entity.setGameSize(random.randint(5,10))

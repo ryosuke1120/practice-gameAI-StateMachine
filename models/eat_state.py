@@ -15,8 +15,6 @@ class EatState(state.State):
 
 	#FindAndFireSomethingから遷移した際に一度だけ実行される
 	def enter(self, entity):
-		# if entity.getLocation() != LocationType.Field :
-		# 	entity.changeLocation(LocationType.Field)
 		# entity.setMessage("食べます")
 		entity.setMessage("スプラトゥーンをします")
 
