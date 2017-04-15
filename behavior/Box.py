@@ -4,19 +4,15 @@
 import random
 
 class Box(object):
-#attr_accessor :selector, :list
 
 	def __init__(self):
 		self.selector = "確率的選択"
 		self.a_list = []
 
 	def add_list(self, bhv):
-		#@a_list << node
 		self.a_list.append(bhv)
 
 	def get_by_selector(self):
-		# children = @a_list.find_all{|n|n.executable?}
-		# children = self.a_list.find_all{|n|n.executable?}
 		#children = filter((lambda bhv: bhv.executable() == True), self.a_list)
 		children = [bhv for bhv in self.a_list if bhv.executable() == True]
 		if self.selector in {'確率的選択'}:

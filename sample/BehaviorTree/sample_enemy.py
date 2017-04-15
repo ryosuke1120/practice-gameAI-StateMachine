@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import behavior_tree
+import sample_behavior_tree
 
 class SampleEnemy(object):
 
 	def __init__(self):
-		self.behavior_tree = behavior_tree.BehaviorTree()
+		self.behavior_tree = sample_behavior_tree.BehaviorTree()
 
 	def enemy_conflict_act(self):
 		action_list = self.behavior_tree.get_conflict_behavior()

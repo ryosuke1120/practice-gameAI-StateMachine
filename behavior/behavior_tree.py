@@ -115,7 +115,6 @@ class BehaviorTree(object):
 		behavior_list = []
 		node = self.get_conflict_behavior_tree_node()
 		while True:
-			#break if node.children.empty?
 			if node.children() != []: 
 				node = node.box.get_by_selector()
 				behavior_list.append(node.get_name())

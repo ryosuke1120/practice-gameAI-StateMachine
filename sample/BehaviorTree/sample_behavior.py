@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import box
+import sample_box
 
 class Behavior():
 	def __init__(self, name):
 		self.name = name
-		self.box = box.Box() 
+		self.box = sample_box.Box() 
 
 	def add_behavior(self, bhv):
 		self.box.add_list(bhv)

@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#import pydot
 import box
 
 class Behavior(object):
-	
+
 	def __init__(self, name):
 		self.name = name
 		self.box = box.Box() # 子ビヘイビアはただの配列ではなく「選択方法」を知っている配列でないといけない
