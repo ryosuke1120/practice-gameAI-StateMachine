@@ -1,7 +1,7 @@
 # Prototype development of game AI using neural network
 
 ## Demo (current development situation)
-![demo](https://cloud.githubusercontent.com/assets/23193177/24845297/da357b3c-1deb-11e7-9d8b-5174b803b5f2.gif)
+![demo](https://github.com/ryosuke1120/proto-dev-gameAI-byNN/blob/master/DEMO-proto-dev-gameAI-byNN.gif)
 
 ## How to run  
 `$ python3 main_activity.py`
