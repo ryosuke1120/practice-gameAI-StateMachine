@@ -4,7 +4,7 @@
 import random
 import state
 
-class FoxGlobalState(state.State): 
+class LittleGirlGlobalState(state.State): 
 
 	def __init__(self):
 		self.random_num = 1
@@ -21,9 +21,11 @@ class FoxGlobalState(state.State):
 			entity.getFsm().revertToPreviousState()
 		else:
 			#ランダムであくびイベント発生
-			self.random_num = random.randint(0,9)
+			# self.random_num = random.randint(0,45)
+			#デバッグのため未使用
+			self.random_num = 1
 
-		if self.random_num % 6 == 0 :
+		if self.random_num % 23 == 0 :
 			entity.getFsm().changeState(self)
 
 	#出るときつかれたなあ、とつぶやく#

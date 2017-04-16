@@ -17,4 +17,9 @@ class BaseGameEntity(object):
 	#動作をアップデートする処理。下位クラスでの実装を必須にする
 	@abstractmethod
 	def update():
-		pass	
+		pass
+
+	#def handleMessage( msg : Telegram )
+	@abstractmethod
+	def handleMessage(msg):
+		pass

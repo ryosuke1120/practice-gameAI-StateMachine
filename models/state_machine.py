@@ -28,8 +28,8 @@ class StateMachine(state.State):
         if self.m_nowExecute == self.NOW_EXECUTE:
             if self.m_pGlobalState != None:
                 self.m_pGlobalState.execute(self.m_pOwner)
-                if (self.m_pCurrentState != self.m_pGlobalState) and (self.m_nowExecute == self.NOW_EXECUTE):
-                    self.m_pCurrentState.execute(self.m_pOwner)
+            if (self.m_pCurrentState != self.m_pGlobalState) and (self.m_nowExecute == self.NOW_EXECUTE):
+                self.m_pCurrentState.execute(self.m_pOwner)
         else:
             self.changeState(self.m_pCurrentState)
  
@@ -68,3 +68,10 @@ class StateMachine(state.State):
     #もとの状態に戻す（GlobalStateから呼ばれる）
     def revertToPreviousState(self):
         self.changeState(self.m_pPreviousState)
+
+    def handleMessage(self, msg):
+        #ステートが有効で、メッセージを処理できる状態かを調べる
+        if self.m_nowExecute == self.NOW_EXECUTE :
+            self.m_pCurrentState.onMessage(self.m_pOwner, msg)
+            return True
+        return False

@@ -5,25 +5,26 @@
 
 import state
 import random
-import fire_state
+import find_state
  
-class SearchState(state.State):
+class StrollState(state.State):
 
 	#SleepまたはEatSomethingから遷移した際に一回だけ実行される
 	def enter(self, entity):
 		# entity.setMessage("捜索を開始します")
-		entity.setMessage("活動を開始します")
+		entity.setMessage("LittleGirl : お散歩をしよう。")
 
 	#条件が満たされるまで実行される
 	def execute(self, entity):
-		random_num = random.randint(0,9)
+		# random_num = random.randint(0,9)
 		# entity.setMessage("きょろきょろ")
-		entity.setMessage("だらだら")
-
-		if random_num % 3 == 0 :
-			#entity.changeState(FindAndFireSomething.FindAndFireSomething())
-			entity.getFsm().changeState(fire_state.FireState())
+		entity.setMessage("LittleGirl : てくてく")
 
 	#FindAndFireSomethingに遷移する際に一度だけ実行される
 	def exit(self, entity):
-		entity.setMessage("ゲームでもするか")
+		entity.setMessage("LittleGirl : あれ？動物の足跡…？")
+
+	def onMessage(self, entity, telegram):
+		if telegram.message != None :
+			if telegram.message == "STROLL_STATE" :
+				entity.getFsm().changeState(find_state.FindState())

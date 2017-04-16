@@ -2,27 +2,35 @@
 # -*- coding: utf-8 -*-
 
 import base_game_entity
-import search_state
+import stroll_state
 import state_machine
 import sleep_state
-import fox_global_state
+import little_girl_global_state
 import behavior_tree
+import inspect
 
 import neural
 
-class Fox(base_game_entity.BaseGameEntity): 
+class LittleGirl(base_game_entity.BaseGameEntity): 
 
-	def __init__(self, m_ID, m_STOMACH_SIZE):
+	def __init__(self, message_dispatcher, m_ID, m_STOMACH_SIZE):
 
+		self.message_dispatcher = message_dispatcher
 		self.m_ID = m_ID
 		self.m_STOMACH_SIZE = m_STOMACH_SIZE
 		#現在の状態を保持
 		#self.m_pCurrentState = SearchSomething.SearchSomething()
 		#self.m_pStateMachine = StateMachine.StateMachine(self, SearchSomething.SearchSomething(), Sleep.Sleep(), None)
-		self.m_pStateMachine = state_machine.StateMachine(self, search_state.SearchState(), sleep_state.SleepState(), fox_global_state.FoxGlobalState())
+		self.m_pStateMachine = state_machine.StateMachine(self, stroll_state.StrollState(), sleep_state.SleepState(), little_girl_global_state.LittleGirlGlobalState())
 
 		#現在のお腹の空き具合：0が空腹状態
 		self.m_nowStomachDegree = 5
+
+		#現在の心の具合：0が疲れた状態
+		self.m_nowMentalHealth = 5
+
+		#現在の体力の具合：0が疲れた状態
+		self.m_nowStamina = 5
 
 		#獲物の焼き具合：0になると焼き切った状態
 		self.m_donenessLevel = 0
@@ -103,15 +111,46 @@ class Fox(base_game_entity.BaseGameEntity):
 		else: 
 			return False
 
-	#消化
-	#Sleepから呼ばれる
-	def digestSomething(self, digestCount):
-		self.m_nowStomachDegree -= digestCount
+	#精神消費
+	def stress(self, stress):
+		self.m_nowMentalHealth -= stress
 
-	#お腹がすいたかどうかを返す
-	#SleepからSearchSomethingに移行するかの判定で呼ばれる
-	def isHungry(self):
-		if self.m_nowStomachDegree <= 0:
+	#精神回復
+	def recover_mental(self, recover):
+		self.m_nowMentalHealth += recover
+
+	#心が回復したかどうかを返す
+	def is_mental_good(self):
+		if self.m_nowMentalHealth >= 5:
+			return True
+		else: 
+			return False
+
+	#心が消耗しきったかどうかを返す
+	def is_mental_bad(self):
+		if self.m_nowMentalHealth <= 0:
+			return True
+		else: 
+			return False
+
+	#体力消費
+	def exhaust(self, exhaust):
+		self.m_nowStamina -= exhaust
+
+	#体力回復
+	def recover_stamina(self, stamina):
+		self.m_nowStamina += stamina
+
+	#体力が回復したかどうかを返す
+	def is_stamina_good(self):
+		if self.m_nowStamina >= 5:
+			return True
+		else: 
+			return False
+
+	#体力が消耗しきったかどうかを返す
+	def is_stamina_bad(self):
+		if self.m_nowStamina <= 0:
 			return True
 		else: 
 			return False
@@ -154,6 +193,8 @@ class Fox(base_game_entity.BaseGameEntity):
 	def train_act(self):
 		self.get_neural().train()
 
+	def handleMessage(self, msg):
+		return self.getFsm().handleMessage( msg )
 	#--------------------未実装--------------------
 
 	# #get next precept p
