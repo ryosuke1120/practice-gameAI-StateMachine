@@ -25,5 +25,5 @@ class State(object):
 
     #メッセージディスパッチャからメッセージを受け取ったら実行する
     @abstractmethod
-    def onMessage(self, entity_type, telegram):
+    def on_message(self, entity_type, telegram):
         pass

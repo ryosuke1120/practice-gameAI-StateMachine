@@ -6,7 +6,6 @@ import telegram as tm
 import sorted_set_of
 
 #メッセージの送信を司るシングルトンのクラス
-#object MessageDispatcher {
 class MessageDispatcher(object):
 
 	def __init__(self, main_activity):
@@ -22,44 +21,44 @@ class MessageDispatcher(object):
 	#受け取り側のメッセージ処理用のメンバー関数を呼ぶ
 	#pReceiver : BaseGameEntity?
 	#telegram : Telegram 
-	def disCharge(self, pReceiver, telegram):
-		if not pReceiver.handleMessage( telegram ):
+	def dis_charge(self, pReceiver, telegram):
+		if not pReceiver.handle_message( telegram ):
 		# if( done !== null && !done )
 			#即時実行できなければ、５秒後のリトライ
-			#currentTime = Calendar.getInstance().timeInMillis
-			currentTime = time.time()
-			telegram.dispatchTime = currentTime + 5
+			#current_time = Calendar.getInstance().timeInMillis
+			current_time = time.time()
+			telegram.dispatch_time = current_time + 5
 			self.priority_q.add( telegram )
 
 	#メッセージを送信する
 	#delay : Long, sender : Int, eceiver : Int, message : MessageType, extraInfo : Any? 
-	def dispatchMessage(self, delay, sender, receiver, message, extraInfo):
-		pReceiver = self.main_activity.a_entity_manager.getEntityFromId( receiver )
-		telegram = tm.Telegram( self.SEND_MESSAGE_IMMEDIATELY, sender, receiver, message, extraInfo )
+	def dispatch_message(self, delay, sender, receiver, message, extra_info):
+		pReceiver = self.main_activity.a_entity_manager.get_entity_from_id( receiver )
+		telegram = tm.Telegram( self.SEND_MESSAGE_IMMEDIATELY, sender, receiver, message, extra_info )
 
 		if delay <= self.SEND_MESSAGE_IMMEDIATELY :
-			self.disCharge( pReceiver, telegram )
+			self.dis_charge( pReceiver, telegram )
 		else:
-			#currentTime = Calendar.getInstance().timeInMillis
-			currentTime = time.time()
-			telegram.dispatchTime = currentTime + delay
+			#current_time = Calendar.getInstance().timeInMillis
+			current_time = time.time()
+			telegram.dispatch_time = current_time + delay
 			self.priority_q.add( telegram )
 
 	#メッセージを遅延送信する。
-	#メインループで実行し、しかるべきタイミングでメッセージが送信されるようにすべき
-	def dispatchDelayedMessages(self):
-		#currentTime = Calendar.getInstance().timeInMillis
-		currentTime = time.time()
-		while (len(self.priority_q._treeset) > 0) and (self.priority_q.get_last().dispatchTime < currentTime) and (self.priority_q.get_last().dispatchTime > 0) :
+	#メインループで実行し、しかるべきタイミングでメッセージが送信される
+	def dispatch_delayed_messages(self):
+		#current_time = Calendar.getInstance().timeInMillis
+		current_time = time.time()
+		while (len(self.priority_q._treeset) > 0) and (self.priority_q.get_last().dispatch_time < current_time) and (self.priority_q.get_last().dispatch_time > 0) :
 			#キューの先頭からTelegramを読む
 			telegram = self.priority_q.get_last()
 
 			#受信者を見つける
-			# pReceiver = EntityManager.getEntityFromId( telegram.receiver )
-			pReceiver = self.main_activity.a_entity_manager.getEntityFromId( telegram.receiver )
+			# pReceiver = EntityManager.get_entity_from_id( telegram.receiver )
+			pReceiver = self.main_activity.a_entity_manager.get_entity_from_id( telegram.receiver )
 
 			#受信者にTelegramを送る
-			self.disCharge( pReceiver, telegram )
+			self.dis_charge( pReceiver, telegram )
 
 			#終わったらキューから削除
 			self.priority_q.remove( telegram )

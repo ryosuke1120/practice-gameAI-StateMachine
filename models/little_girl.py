@@ -63,53 +63,53 @@ class LittleGirl(base_game_entity.BaseGameEntity):
 	# 	#新しいステートに変更し、enter処理
 	# 	self.m_pCurrentState = pNewState
 	# 	self.m_pCurrentState.enter(self)
-	def getFsm(self):
+	def get_fsm(self):
 		return self.m_pStateMachine
 
-	#現在のロケーションを返す
-	#Stateの実装クラスから呼ばれる
-	def getLocation(self): 
-		LocationType = self.m_location
+	# #現在のロケーションを返す
+	# #Stateの実装クラスから呼ばれる
+	# def getLocation(self): 
+	# 	LocationType = self.m_location
 
-	#ロケーションを変更する
-	#Stateの実装クラスから呼ばれる
-	def changeLocation(self, newLocation):
-		self.m_location = newLocation
+	# #ロケーションを変更する
+	# #Stateの実装クラスから呼ばれる
+	# def changeLocation(self, newLocation):
+	# 	self.m_location = newLocation
 
-	#焼き終わったかを返す
-	#Stateの実装クラスであるFindAndFireSomethingから呼ばれる
-	def isDonenessFull(self):
-		if self.m_donenessLevel <= 0:
-			return True
-		else:
-			return False
+	# #焼き終わったかを返す
+	# #Stateの実装クラスであるFindAndFireSomethingから呼ばれる
+	# def isDonenessFull(self):
+	# 	if self.m_donenessLevel <= 0:
+	# 		return True
+	# 	else:
+	# 		return False
 
-	#焼く
-	#FindAndFireSomethingから呼ばれる
-	def fireSomething(self, fireCount):
-		self.m_donenessLevel -= fireCount
+	# #焼く
+	# #FindAndFireSomethingから呼ばれる
+	# def fireSomething(self, fireCount):
+	# 	self.m_donenessLevel -= fireCount
 
-	#食べる
-	#EatSomethingから呼ばれる
-	def eatSomething(self, eatCount):
-		self.m_eatSize -= eatCount
-		self.m_nowStomachDegree += eatCount
+	# #食べる
+	# #EatSomethingから呼ばれる
+	# def eatSomething(self, eatCount):
+	# 	self.m_eatSize -= eatCount
+	# 	self.m_nowStomachDegree += eatCount
 
-	#食べ終わったかどうかを返す
-	#EatSomethingから呼ばれる
-	def isAte(self):
-		if self.m_eatSize <= 0:
-			return True
-		else:
-			return False
+	# #食べ終わったかどうかを返す
+	# #EatSomethingから呼ばれる
+	# def isAte(self):
+	# 	if self.m_eatSize <= 0:
+	# 		return True
+	# 	else:
+	# 		return False
 
-	#お腹がいっぱいかどうかを返す
-	#EatSomethingからSleep・SearchSomethingのどちらに移行するかを判定する際に呼ばれる
-	def isStomachFull(self):
-		if self.m_nowStomachDegree >= self.m_STOMACH_SIZE:
-			return True
-		else: 
-			return False
+	# #お腹がいっぱいかどうかを返す
+	# #EatSomethingからSleep・SearchSomethingのどちらに移行するかを判定する際に呼ばれる
+	# def isStomachFull(self):
+	# 	if self.m_nowStomachDegree >= self.m_STOMACH_SIZE:
+	# 		return True
+	# 	else: 
+	# 		return False
 
 	#精神消費
 	def stress(self, stress):
@@ -155,23 +155,23 @@ class LittleGirl(base_game_entity.BaseGameEntity):
 		else: 
 			return False
 
-	#お腹の空き具合を変更する
-	def changeNowStomachDegree(self, changeCount):
-		self.m_nowStomachDegree += changeCount
+	# #お腹の空き具合を変更する
+	# def changeNowStomachDegree(self, changeCount):
+	# 	self.m_nowStomachDegree += changeCount
 
 	#獲物の大きさから、どれくらい焼けば良いのか・食べたらどれくらい満たされるのかを設定する
-	def setGameSize(self, size):
+	def set_game_size(self, size):
 		self.m_donenessLevel = size
 		self.m_eatSize = size
 
 	#メッセージを取得する
 	#MainActivityから呼ばれる
-	def getMessage(self):
+	def get_message(self):
 		return self.m_message
 
 	#メッセージを設定する
-	def setMessage(self, newMessage):
-		self.m_message = newMessage
+	def set_message(self, new_message):
+		self.m_message = new_message
 
 	#ステートがconflictの際のaction
 	def conflict_act(self):
@@ -193,8 +193,8 @@ class LittleGirl(base_game_entity.BaseGameEntity):
 	def train_act(self):
 		self.get_neural().train()
 
-	def handleMessage(self, msg):
-		return self.getFsm().handleMessage( msg )
+	def handle_message(self, msg):
+		return self.get_fsm().handle_message( msg )
 	#--------------------未実装--------------------
 
 	# #get next precept p

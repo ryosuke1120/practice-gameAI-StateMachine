@@ -10,18 +10,18 @@ import feel_sorrow_state
 class EnjoyState(state.State):
 
 	def enter(self, entity):
-		entity.setMessage("LittleGirl : わたしとあそぼっ！")
-		entity.setGameSize(random.randint(5,10))
+		entity.set_message("LittleGirl : わたしとあそぼっ！")
+		entity.set_game_size(random.randint(5,10))
 
 	#条件が満たされるまで実行される
 	def execute(self, entity):
 		# entity.fireSomething(random.randint(1,2))
 		# entity.setMessage("じゅーじゅー")
-		entity.setMessage("LittleGirl : あははー♪")
+		entity.set_message("LittleGirl : あははー♪")
 		#精神回復
 		entity.recover_mental(1)
 		#体力消費
-		entity.exhaust(random.randint(1,2))
+		entity.exhaust(1)
 
 		#ビヘイビアツリーによる行動
 		#entity.setMessage(entity.conflict_act())
@@ -33,15 +33,15 @@ class EnjoyState(state.State):
 
 	#EatSomethingに遷移する際に一度だけ実行される
 	def exit(self, entity):
-		entity.setMessage("LittleGirl : えっ、もうかえっちゃうの？")
-		entity.message_dispatcher.dispatchMessage(
+		entity.set_message("LittleGirl : えっ、もうかえっちゃうの？")
+		entity.message_dispatcher.dispatch_message(
 					entity.message_dispatcher.SEND_MESSAGE_IMMEDIATELY,
 					entity.m_ID,
 					2, #EntityNames.Monster.ID
 					"PLAY_STATE", #MessageType
 					None )
 
-	def onMessage(self, entity, telegram):
+	def on_message(self, entity, telegram):
 		if telegram.message != None :
 			if telegram.message == "ENJOY_STATE" :
-				entity.getFsm().changeState(feel_sorrow_state.FeelSorrowState())
+				entity.get_fsm().change_state(feel_sorrow_state.FeelSorrowState())

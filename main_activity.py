@@ -16,17 +16,17 @@ class MainActivity(object):
 		self.my_monster = Monster(self.md, EntityNames.MONSTER.value, 5, 5)
 
 		self.a_entity_manager = entity_manager.EntityManager()
-		self.a_entity_manager.registerEntity(self.my_little_girl)
-		self.a_entity_manager.registerEntity(self.my_monster)
+		self.a_entity_manager.register_entity(self.my_little_girl)
+		self.a_entity_manager.register_entity(self.my_monster)
  
 	def run_world(self): 
 		self.my_little_girl.update()
 		self.my_monster.update()
 		# fox_message.text = myFox.getMessage()
-		print(self.my_little_girl.getMessage())
-		print(self.my_monster.getMessage())
+		print(self.my_little_girl.get_message())
+		print(self.my_monster.get_message())
 
-		self.md.dispatchDelayedMessages()
+		self.md.dispatch_delayed_messages()
 
 if __name__ == "__main__":
 	a_game = MainActivity()

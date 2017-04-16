@@ -39,14 +39,14 @@ class Monster(base_game_entity.BaseGameEntity):
 	def recover(self, recovered):
 		self.stamina += recovered
 
-	def isStaminaLess(self):
+	def is_stamina_less(self):
 		if self.stamina <= 0:
 			return True
 		else:
 			return False
 
 	#StateMachineを取得する
-	def getFsm(self):
+	def get_fsm(self):
 		return self.m_pStateMachine
 
 	#ループで実行される
@@ -64,15 +64,15 @@ class Monster(base_game_entity.BaseGameEntity):
 	# 	else:
 	# 		m_donenessLevel = 1#DonenessLevel.DONENESS_UNDER.level
 
-	def handleMessage(self, msg):
-		return self.getFsm().handleMessage( msg )
+	def handle_message(self, msg):
+		return self.get_fsm().handle_message( msg )
 
 	#メッセージを取得する
 	#MainActivityから呼ばれる
-	def getMessage(self):
+	def get_message(self):
 		return self.m_message
 
 	#メッセージを設定する
-	def setMessage(self, newMessage):
-		self.m_message = newMessage
+	def set_message(self, new_message):
+		self.m_message = new_message
 

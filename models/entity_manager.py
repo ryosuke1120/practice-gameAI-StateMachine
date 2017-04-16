@@ -6,15 +6,12 @@
 class EntityManager(object):
 
 	def __init__(self):
-		#self.m_EntityMap : Map<Int, BaseGameEntity> = HashMap()
-		self.m_EntityMap = {}
+		self.m_entity_map = {}
 
 	#IDからエージェントを返す
-	def getEntityFromId(self, id_num):
-		return self.m_EntityMap[ id_num ]
+	def get_entity_from_id(self, id_num):
+		return self.m_entity_map[ id_num ]
 
 	#場のエージェントを追加する
-	#newEntity : BaseGameEntity
-	def registerEntity(self, newEntity):
-		# m_EntityMap += hashMapOf( newEntity.m_ID to newEntity )
-		self.m_EntityMap[newEntity.m_ID] = newEntity
+	def register_entity(self, new_entity):
+		self.m_entity_map[new_entity.m_ID] = new_entity

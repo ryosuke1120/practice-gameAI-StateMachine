@@ -16,7 +16,7 @@ class SortedSetOf(object):
             return self._treeset[len(self._treeset) - 1] 
         pass
 
-    def addAll(self, elements):
+    def add_all(self, elements):
         for element in elements:
             if element in self: continue
             self.add(element)
@@ -25,7 +25,7 @@ class SortedSetOf(object):
         if element not in self:
             # bisect.insort(self._treeset, element)
             self._treeset.append(element)
-            self._treeset = sorted(self._treeset, key=lambda x: x.dispatchTime)
+            self._treeset = sorted(self._treeset, key=lambda x: x.dispatch_time)
 
     def ceiling(self, e):
         index = bisect.bisect_right(self._treeset, e)

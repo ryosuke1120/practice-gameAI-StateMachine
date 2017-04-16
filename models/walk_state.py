@@ -11,17 +11,17 @@ class WalkState(state.State):
 	#散歩モードに入ったときに一度だけ実行される
 	def enter(self, entity):
 		# entity.changeLocation(LocationType.Field)
-		entity.setMessage("Monster : ぴょこっ")
+		entity.set_message("Monster : ぴょこっ")
 
 	#条件が満たされるまで実行される
 	def execute(self, entity):
-		entity.setMessage("Monster : ぴょこぴょこっ")
+		entity.set_message("Monster : ぴょこぴょこっ")
 
 		#ランダムでLittleGirlにメッセージを送る
 		#LittleGirlにフィールドにいることを伝える
 		random_num = random.randint(1,11)
 		if random_num % 3 == 0 :
-			entity.message_dispatcher.dispatchMessage(
+			entity.message_dispatcher.dispatch_message(
 								entity.message_dispatcher.SEND_MESSAGE_IMMEDIATELY,
 								entity.m_ID,
 								1, #EntityNames.LittleGirl.ID
@@ -30,10 +30,10 @@ class WalkState(state.State):
 
 	#PlayStateに遷移する際に一度だけ実行される
 	def exit(self, entity):
-		entity.setMessage("Monster : …？？（気配を感じている。）")
+		entity.set_message("Monster : …？？（気配を感じている。）")
 
-	def onMessage(self, entity, telegram):
+	def on_message(self, entity, telegram):
 		if telegram.message != None :
 			if telegram.message == "WALK_STATE" :
-				entity.getFsm().changeState(play_state.PlayState())
+				entity.get_fsm().change_state(play_state.PlayState())
 		

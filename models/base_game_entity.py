@@ -21,5 +21,5 @@ class BaseGameEntity(object):
 
 	#def handleMessage( msg : Telegram )
 	@abstractmethod
-	def handleMessage(msg):
+	def handle_message(msg):
 		pass

@@ -12,19 +12,19 @@ class StrollState(state.State):
 	#SleepまたはEatSomethingから遷移した際に一回だけ実行される
 	def enter(self, entity):
 		# entity.setMessage("捜索を開始します")
-		entity.setMessage("LittleGirl : お散歩をしよう。")
+		entity.set_message("LittleGirl : お散歩をしよう。")
 
 	#条件が満たされるまで実行される
 	def execute(self, entity):
 		# random_num = random.randint(0,9)
 		# entity.setMessage("きょろきょろ")
-		entity.setMessage("LittleGirl : てくてく")
+		entity.set_message("LittleGirl : てくてく")
 
 	#FindAndFireSomethingに遷移する際に一度だけ実行される
 	def exit(self, entity):
-		entity.setMessage("LittleGirl : あれ？動物の足跡…？")
+		entity.set_message("LittleGirl : あれ？動物の足跡…？")
 
-	def onMessage(self, entity, telegram):
+	def on_message(self, entity, telegram):
 		if telegram.message != None :
 			if telegram.message == "STROLL_STATE" :
-				entity.getFsm().changeState(find_state.FindState())
+				entity.get_fsm().change_state(find_state.FindState())
