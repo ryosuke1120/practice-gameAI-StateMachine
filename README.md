@@ -16,7 +16,7 @@ If your environment does not work, please use the Vagrant file as below.
 
 ## Effect
 I am a beginner developer of game AI,  
-because I started development in April 2017. :)  
+because I started development in April 2017.  
 In this repository, development is proceeding with personal interest.  
 
 I am developing game AI using Python,  
