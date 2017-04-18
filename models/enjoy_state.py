@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#お肉が焼けたならば（isDonenessFull = true）→EatSomething
-
 import state
 import random
 import feel_sorrow_state

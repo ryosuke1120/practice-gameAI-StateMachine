@@ -16,8 +16,6 @@ class StrollState(state.State):
 
 	#条件が満たされるまで実行される
 	def execute(self, entity):
-		# random_num = random.randint(0,9)
-		# entity.setMessage("きょろきょろ")
 		entity.set_message("LittleGirl : てくてく")
 
 	#FindAndFireSomethingに遷移する際に一度だけ実行される

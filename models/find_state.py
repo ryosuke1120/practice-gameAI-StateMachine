@@ -18,8 +18,6 @@ class FindState(state.State):
 
 		random_num = random.randint(1,9)
 		if random_num % 3 == 0 :
-			# 	#entity.changeState(FindAndFireSomething.FindAndFireSomething())
-			# 	entity.getFsm().changeState(fire_state.FireState())
 			#Monsterにメッセージを送る
 			entity.message_dispatcher.dispatch_message(
 					entity.message_dispatcher.SEND_MESSAGE_IMMEDIATELY,

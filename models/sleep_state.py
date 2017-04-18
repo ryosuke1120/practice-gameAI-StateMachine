@@ -16,7 +16,6 @@ class SleepState(state.State):
 		entity.set_message("LittleGirl : すやすや")
 		entity.recover_stamina(1)
 		if entity.is_stamina_good():
-			# entity.changeState(SearchSomething.SearchSomething())
 			entity.get_fsm().change_state(stroll_state.StrollState())
 
 	#SearchSomethingに遷移する際に一度だけ実行される

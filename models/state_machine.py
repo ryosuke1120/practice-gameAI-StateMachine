@@ -35,17 +35,6 @@ class StateMachine(state.State):
  
     #entity.change_state()の処理を移譲したもの
     def change_state(self, pNewState):
-        # #現在の状態を保存
-        # self.m_pPreviousState = self.m_pCurrentState
-
-        # #終了処理
-        # self.m_pCurrentState.exit(self.m_pOwner)
-
-        # #新しい状態に置き換える
-        # self.m_pCurrentState = pNewState
-
-        # #開始処理
-        # self.m_pCurrentState.enter(self.m_pOwner)
         if self.m_nowExecute == self.NOW_EXECUTE:
             #現在の状態を保存
             self.m_pPreviousState = self.m_pCurrentState

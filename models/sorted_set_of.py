@@ -23,7 +23,6 @@ class SortedSetOf(object):
 
     def add(self, element):
         if element not in self:
-            # bisect.insort(self._treeset, element)
             self._treeset.append(element)
             self._treeset = sorted(self._treeset, key=lambda x: x.dispatch_time)
 
