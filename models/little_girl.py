@@ -121,7 +121,7 @@ class LittleGirl(base_game_entity.BaseGameEntity):
 
 	#心が回復したかどうかを返す
 	def is_mental_good(self):
-		if self.m_nowMentalHealth >= 5:
+		if self.m_nowMentalHealth >= 10:
 			return True
 		else: 
 			return False
