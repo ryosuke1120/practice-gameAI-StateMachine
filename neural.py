@@ -8,6 +8,7 @@ from dqn_agent import DQNAgent
 
 import time
 
+
 class Neural(object):
 
     def __init__(self):
@@ -42,18 +43,19 @@ class Neural(object):
                 state_t = state_t_1
 
                 # execute action in environment
-                action_t = self.agent.select_action(state_t, self.agent.exploration)
+                action_t = self.agent.select_action(
+                    state_t, self.agent.exploration)
                 self.env.execute_action(action_t)
 
                 # observe environment
                 state_t_1, reward_t, terminal = self.env.observe()
 
                 # store experience
-                self.agent.store_experience(state_t, action_t, reward_t, state_t_1, terminal)
+                self.agent.store_experience(
+                    state_t, action_t, reward_t, state_t_1, terminal)
 
                 # experience replay
                 self.agent.experience_replay()
-
 
                 # for log
                 frame += 1
@@ -64,9 +66,16 @@ class Neural(object):
 
             # print("EPOCH: {:03d}/{:03d} | WIN: {:03d} | LOSS: {:.4f} | Q_MAX: {:.4f}| terminal: {:.5f}".format(
             #     e, n_epochs - 1, win, loss / frame, Q_max / frame, terminal))
-            print("EPOCH: {:03d}/{:03d} | WIN: {:03d} | LOSS: {:.4f} | Q_MAX: {:.4f}| terminal: {:.5f}".format(
-                e, self.n_epochs - 1, self.win, loss , Q_max , terminal))
+            print(
+                "EPOCH: {:03d}/{:03d} | WIN: {:03d} | LOSS: {:.4f} | Q_MAX: {:.4f}| terminal: {:.5f}".format(
+                    e,
+                    self.n_epochs -
+                    1,
+                    self.win,
+                    loss,
+                    Q_max,
+                    terminal))
 
         # save model
-        #今は使用しない
+        # 今は使用しない
         # agent.save_model()

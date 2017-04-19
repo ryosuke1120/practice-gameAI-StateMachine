@@ -3,6 +3,7 @@
 
 from abc import ABCMeta, abstractmethod
 
+
 class State(object):
     __metaclass__ = ABCMeta
 

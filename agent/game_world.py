@@ -17,21 +17,21 @@ class GameWorld(object):
         self.reward = 0
         self.terminal = False
 
-        #data設計------------------------------------------------------------------------------------------
-        #inputdataの種類：体力度, 空腹度, 食欲,　睡眠欲, 性欲, 労働欲, 喜, 怒, 哀, 楽
-        #outputdataの種類：※一旦１０種類(0と1のbit)
-        #parameter幅：1ターン毎
-        #data幅：0.0 ~ 1.0(float)
+        # data設計------------------------------------------------------------------------------------------
+        # inputdataの種類：体力度, 空腹度, 食欲,　睡眠欲, 性欲, 労働欲, 喜, 怒, 哀, 楽
+        # outputdataの種類：※一旦１０種類(0と1のbit)
+        # parameter幅：1ターン毎
+        # data幅：0.0 ~ 1.0(float)
         self.game_parameter = []
-        for i in range(1,100) :
+        for i in range(1, 100):
             a_param = []
-            for j in range(1,10) :
+            for j in range(1, 10):
                 a_param.append(random.random())
 
             self.game_parameter.append(a_param)
-        #print(self.game_parameter)
+        # print(self.game_parameter)
 
-        #------------------------------------------------------------------------------------------
+        #----------------------------------------------------------------------
 
         # reset other variables
         # # variables
@@ -66,33 +66,34 @@ class GameWorld(object):
         self.reward = 0
         self.terminal = False
 
-        #ゲームを簡易化（６で割り切れたら終わり）
-        self.random_num = random.randint(0,9)
-        if self.random_num % 6 == 0 :
-            #ゲーム終了フラグ設定
+        # ゲームを簡易化（６で割り切れたら終わり）
+        self.random_num = random.randint(0, 9)
+        if self.random_num % 6 == 0:
+            # ゲーム終了フラグ設定
             self.terminal = True
 
             #[0:罰を与えるButtonを押す][1:何もしない][2:褒めるButtonを押す]によって分岐予定
-            #現在はランダムで仮実装
-            self.random_num_oth = random.randint(0,2)
-            if self.random_num_oth == 0 :
-                #罰を与える
+            # 現在はランダムで仮実装
+            self.random_num_oth = random.randint(0, 2)
+            if self.random_num_oth == 0:
+                # 罰を与える
                 print("罰を与える")
                 self.reward = -1
             elif self.random_num_oth == 2:
-                #褒める
+                # 褒める
                 print("褒める")
                 self.reward = 1
             else:
-                #何もしない
+                # 何もしない
                 print("何もしない")
                 self.reward = 0
 
     def observe(self):
         # self.draw()
-        #print("self.myFox.update()→state_t_1（パラメータの状態）もアップデート")
-        #self.screen = np.zeros((self.screen_n_rows, self.screen_n_cols))#サンプル1
-        self.screen = np.zeros((10))#サンプル2
+        # print("self.myFox.update()→state_t_1（パラメータの状態）もアップデート")
+        # self.screen = np.zeros((self.screen_n_rows,
+        # self.screen_n_cols))#サンプル1
+        self.screen = np.zeros((10))  # サンプル2
         #print("state_t_1（パラメータの状態）, reward_t（手動による1or-1（なにもしない場合は0））, terminal（現在のステートがEXCUTEならFalse）を返す仕組みを作る")
         return self.screen, self.reward, self.terminal
 

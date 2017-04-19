@@ -6,6 +6,7 @@
 
 import bisect
 
+
 class SortedSetOf(object):
 
     def __init__(self):
@@ -13,18 +14,20 @@ class SortedSetOf(object):
 
     def get_last(self):
         if self._treeset != []:
-            return self._treeset[len(self._treeset) - 1] 
+            return self._treeset[len(self._treeset) - 1]
         pass
 
     def add_all(self, elements):
         for element in elements:
-            if element in self: continue
+            if element in self:
+                continue
             self.add(element)
 
     def add(self, element):
         if element not in self:
             self._treeset.append(element)
-            self._treeset = sorted(self._treeset, key=lambda x: x.dispatch_time)
+            self._treeset = sorted(
+                self._treeset, key=lambda x: x.dispatch_time)
 
     def ceiling(self, e):
         index = bisect.bisect_right(self._treeset, e)
@@ -92,5 +95,5 @@ class SortedSetOf(object):
         """
         try:
             return e == self._treeset[bisect.bisect_left(self._treeset, e)]
-        except:
+        except BaseException:
             return False

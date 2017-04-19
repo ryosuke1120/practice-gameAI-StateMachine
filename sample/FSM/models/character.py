@@ -7,80 +7,82 @@ import state_machine
 import state_d
 import character_global_state
 
-class Character(base_game_entity.BaseGameEntity): 
 
-	def __init__(self, m_ID, m_STOMACH_SIZE):
+class Character(base_game_entity.BaseGameEntity):
 
-		self.m_ID = m_ID
-		self.m_STOMACH_SIZE = m_STOMACH_SIZE
+    def __init__(self, m_ID, m_STOMACH_SIZE):
 
-		self.m_pStateMachine = state_machine.StateMachine(self, state_a.StateA(), state_d.StateD(), character_global_state.CharacterGlobalState())
+        self.m_ID = m_ID
+        self.m_STOMACH_SIZE = m_STOMACH_SIZE
 
-		self.m_nowStomachDegree = 5
+        self.m_pStateMachine = state_machine.StateMachine(self, state_a.StateA(
+        ), state_d.StateD(), character_global_state.CharacterGlobalState())
 
-		self.m_donenessLevel = 0
+        self.m_nowStomachDegree = 5
 
-		self.m_eatSize = 0
+        self.m_donenessLevel = 0
 
-		self.m_location = "LocationType.Field"
+        self.m_eatSize = 0
 
-		self.m_message = "初期メッセージ"
+        self.m_location = "LocationType.Field"
 
-	def update(self):
-		self.m_pStateMachine.update()
+        self.m_message = "初期メッセージ"
 
-	def getFsm(self):
-		return self.m_pStateMachine
+    def update(self):
+        self.m_pStateMachine.update()
 
-	def getLocation(self): 
-		LocationType = self.m_location
+    def getFsm(self):
+        return self.m_pStateMachine
 
-	def changeLocation(self, newLocation):
-		self.m_location = newLocation
+    def getLocation(self):
+        LocationType = self.m_location
 
-	def isDonenessFull(self):
-		if self.m_donenessLevel <= 0:
-			return True
-		else:
-			return False
+    def changeLocation(self, newLocation):
+        self.m_location = newLocation
 
-	def fireSomething(self, fireCount):
-		self.m_donenessLevel -= fireCount
+    def isDonenessFull(self):
+        if self.m_donenessLevel <= 0:
+            return True
+        else:
+            return False
 
-	def eatSomething(self, eatCount):
-		self.m_eatSize -= eatCount
-		self.m_nowStomachDegree += eatCount
+    def fireSomething(self, fireCount):
+        self.m_donenessLevel -= fireCount
 
-	def isAte(self):
-		if self.m_eatSize <= 0:
-			return True
-		else:
-			return False
+    def eatSomething(self, eatCount):
+        self.m_eatSize -= eatCount
+        self.m_nowStomachDegree += eatCount
 
-	def isStomachFull(self):
-		if self.m_nowStomachDegree >= self.m_STOMACH_SIZE:
-			return True
-		else: 
-			return False
+    def isAte(self):
+        if self.m_eatSize <= 0:
+            return True
+        else:
+            return False
 
-	def digestSomething(self, digestCount):
-		self.m_nowStomachDegree -= digestCount
+    def isStomachFull(self):
+        if self.m_nowStomachDegree >= self.m_STOMACH_SIZE:
+            return True
+        else:
+            return False
 
-	def isHungry(self):
-		if self.m_nowStomachDegree <= 0:
-			return True
-		else: 
-			return False
+    def digestSomething(self, digestCount):
+        self.m_nowStomachDegree -= digestCount
 
-	def changeNowStomachDegree(self, changeCount):
-		self.m_nowStomachDegree += changeCount
+    def isHungry(self):
+        if self.m_nowStomachDegree <= 0:
+            return True
+        else:
+            return False
 
-	def setGameSize(self, size):
-		self.m_donenessLevel = size
-		self.m_eatSize = size
+    def changeNowStomachDegree(self, changeCount):
+        self.m_nowStomachDegree += changeCount
 
-	def getMessage(self):
-		return self.m_message
+    def setGameSize(self, size):
+        self.m_donenessLevel = size
+        self.m_eatSize = size
 
-	def setMessage(self, newMessage):
-		self.m_message = newMessage
+    def getMessage(self):
+        return self.m_message
+
+    def setMessage(self, newMessage):
+        self.m_message = newMessage

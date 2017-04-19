@@ -3,6 +3,7 @@
 
 from enum import Enum
 
+
 class EntityNames(Enum):
-	LITTLEGIRL = 1
-	MONSTER = 2
+    LITTLEGIRL = 1
+    MONSTER = 2

@@ -28,7 +28,9 @@ class DodgeObject:
             self.player_col = max(0, self.player_col - 1)
         elif action == self.enable_actions[2]:
             # move right
-            self.player_col = min(self.player_col + 1, self.screen_n_cols - self.player_length)
+            self.player_col = min(
+                self.player_col + 1,
+                self.screen_n_cols - self.player_length)
         else:
             # do nothing
             pass
@@ -53,7 +55,8 @@ class DodgeObject:
         self.screen = np.zeros((self.screen_n_rows, self.screen_n_cols))
 
         # draw player
-        self.screen[self.player_row, self.player_col:self.player_col + self.player_length] = 1
+        self.screen[self.player_row,
+                    self.player_col:self.player_col + self.player_length] = 1
 
         # draw ball
         self.screen[self.ball_row, self.ball_col] = 1
@@ -68,7 +71,8 @@ class DodgeObject:
     def reset(self):
         # reset player position
         self.player_row = self.screen_n_rows - 1
-        self.player_col = np.random.randint(self.screen_n_cols - self.player_length)
+        self.player_col = np.random.randint(
+            self.screen_n_cols - self.player_length)
 
         # reset ball position
         self.ball_row = 0

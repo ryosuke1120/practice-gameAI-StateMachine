@@ -18,7 +18,10 @@ class Agent:
         self.learning_rate = 0.001
         self.discount_factor = 0.9
         self.exploration = 0.1
-        self.model_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
+        self.model_dir = os.path.join(
+            os.path.dirname(
+                os.path.abspath(__file__)),
+            "models")
         self.model_name = "{}.ckpt".format(self.environment_name)
 
         # replay memory
@@ -43,7 +46,8 @@ class Agent:
         h_fc1 = tf.nn.relu(tf.matmul(x_flat, W_fc1) + b_fc1)
 
         # output layer (n_actions)
-        W_out = tf.Variable(tf.truncated_normal([64, self.n_actions], stddev=0.01))
+        W_out = tf.Variable(tf.truncated_normal(
+            [64, self.n_actions], stddev=0.01))
         b_out = tf.Variable(tf.zeros([self.n_actions]))
         self.y = tf.matmul(h_fc1, W_out) + b_out
 
@@ -101,10 +105,18 @@ class Agent:
             y_minibatch.append(y_j)
 
         # training
-        self.sess.run(self.training, feed_dict={self.x: state_minibatch, self.y_: y_minibatch})
+        self.sess.run(
+            self.training,
+            feed_dict={
+                self.x: state_minibatch,
+                self.y_: y_minibatch})
 
         # for log
-        self.current_loss = self.sess.run(self.loss, feed_dict={self.x: state_minibatch, self.y_: y_minibatch})
+        self.current_loss = self.sess.run(
+            self.loss,
+            feed_dict={
+                self.x: state_minibatch,
+                self.y_: y_minibatch})
 
     def load_model(self, model_path=None):
         if model_path:
@@ -117,4 +129,8 @@ class Agent:
                 self.saver.restore(self.sess, checkpoint.model_checkpoint_path)
 
     def save_model(self):
-        self.saver.save(self.sess, os.path.join(self.model_dir, self.model_name))
+        self.saver.save(
+            self.sess,
+            os.path.join(
+                self.model_dir,
+                self.model_name))

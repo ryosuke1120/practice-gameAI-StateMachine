@@ -34,7 +34,8 @@ if __name__ == "__main__":
             state_t_1, reward_t, terminal = env.observe()
 
             # store experience
-            agent.store_experience(state_t, action_t, reward_t, state_t_1, terminal)
+            agent.store_experience(
+                state_t, action_t, reward_t, state_t_1, terminal)
 
             # experience replay
             agent.experience_replay()
@@ -46,8 +47,16 @@ if __name__ == "__main__":
             if reward_t == 1:
                 win += 1
 
-        print("EPOCH: {:03d}/{:03d} | WIN: {:03d} | LOSS: {:.4f} | Q_MAX: {:.4f}".format(
-            e, n_epochs - 1, win, loss / frame, Q_max / frame))
+        print(
+            "EPOCH: {:03d}/{:03d} | WIN: {:03d} | LOSS: {:.4f} | Q_MAX: {:.4f}".format(
+                e,
+                n_epochs -
+                1,
+                win,
+                loss /
+                frame,
+                Q_max /
+                frame))
 
     # save model
     agent.save_model()

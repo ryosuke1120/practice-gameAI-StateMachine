@@ -3,7 +3,7 @@
 
 import Behavior
 
-#要最適化
+# 要最適化
 
 root = Behavior.Behavior("<root>")
 a = Behavior.Behavior("交戦")
@@ -57,10 +57,11 @@ root.add_behavior(c)
 
 node = root
 while True:
-	#break if node.children.empty?
-	if node.children() == [] : break
-	node = node.box.get_by_selector()
-	print(node.get_name())
+    # break if node.children.empty?
+    if node.children() == []:
+        break
+    node = node.box.get_by_selector()
+    print(node.get_name())
 
 # for bhv_root in root.children():
 # 	for bhv_a in bhv_root.children():
